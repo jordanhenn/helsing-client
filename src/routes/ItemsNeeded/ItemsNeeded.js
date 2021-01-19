@@ -36,7 +36,7 @@ class ItemsNeeded extends Component {
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
-                  <ReserveItem key={study.rsId} {...study}/>
+                  <ReserveItem key={study.rs_id} {...study}/>
               )
           })}
           </ul>

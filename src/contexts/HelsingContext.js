@@ -49,6 +49,9 @@ export class HelsingProvider extends Component {
   render() {
     const value = {
       searchQuery: this.state.searchQuery,
+      studies: this.state.studies,
+      sustainment: this.state.sustainment,
+      timeAndMaterial: this.state.timeAndMaterial,
       setSearchQuery: this.setSearchQuery,
       clearSearchQuery: this.clearSearchQuery,
       setStudies: this.setStudies,

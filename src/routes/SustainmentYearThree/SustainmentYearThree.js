@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import SustainmentItem from '../../components/SustainmentItem'
-import './SustainmentYearOne.css'
+import './SustainmentYearThree.css'
 
 
-class SustainmentYearOne extends Component {
+class SustainmentYearThree extends Component {
   state = { studies: [] }
 
   static getDerivedStateFromError(error) {
@@ -12,17 +12,19 @@ class SustainmentYearOne extends Component {
   }
 
   componentDidMount() {
-      const YearOneList = this.context.sustainment.filter(study => {
-        study.yr1_billed === null
+      const YearThreeList = this.context.sustainment.filter(study => {
+        study.yr1_billed !== null &&
+        study.yr2_billed !== null &&
+        study.yr3_billed === null
       })
       this.setState({ 
-          studies: YearOneList
+          studies: YearThreeList
       })
   }
 
   render() {
     return (
-      <div className='YearOne'>
+      <div className='YearThree'>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
@@ -35,4 +37,4 @@ class SustainmentYearOne extends Component {
   }
 }
 
-export default SustainmentYearOne
+export default SustainmentYearThree
