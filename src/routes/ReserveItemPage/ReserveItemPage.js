@@ -39,7 +39,8 @@ class ReserveItemPage extends Component {
     employee_firstname: null,
     employee_lastname: null,
     employee_email: null,
-    employees: []
+    employees: [],
+    updated: false
   }
 
   componentDidMount() {
@@ -131,12 +132,26 @@ class ReserveItemPage extends Component {
   }
 
   handleUpdate = () => {
+    ev.preventDefault()
+    const { rs_id, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed } = this.state
+    let date_in_queue = this.state.date_in_queue
+    if (csa !== null && scope !== null && retainer !== null && ccrs !== null && hoa_questionnaire !== null && budget !== null && site_plan !==null && reserve_study !== null && annual_review !== null && income_statement !== null && balance_sheet !== null && date_in_queue === null) {
+        date_in_queue = new Date()
+    }
+    const updatedInfo = { manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, date_in_queue }
+    HelsingAPIService.updateReserveStudy(rs_id, updatedInfo)
+    this.setState({updated: true})
+  }
 
+  componentWillUnmount() {
+      this.setState({updated: false})
   }
 
   render() {
     return (
-        <form className='reserve-study'>
+        <div>
+        {(!this.state.updated) ?  
+        <form className='reserve-study' onSubmit={this.handleUpdate}>
         <fieldset>
           <legend>Reserve Study Info</legend>
           <p>Added to job tracker on {this.state.date_added}</p>
@@ -282,7 +297,7 @@ class ReserveItemPage extends Component {
             }}>
                 Email Manager
             </Mailto>
-            <Mailto 
+        <Mailto 
             email={this.state.employee_email}
             headers={{
                 subject: `${this.state.association} - Status Update`,
@@ -290,8 +305,15 @@ class ReserveItemPage extends Component {
             }}>
                 Email Analyst
             </Mailto>
-        
-      </form>
+        <button className="update" type='submit'>
+            UPDATE
+          </button>    
+      </form> :
+      <h4>
+          This study has been updated. Please refresh the page to see the changes. 
+      </h4>
+      }
+      </div>
     )
   }
 }
