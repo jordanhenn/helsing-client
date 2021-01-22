@@ -35,6 +35,7 @@ class ReserveItemPage extends Component {
     final_billed: null,
     draft_billed_date: null,
     final_billed_date: null,
+    additional_notes: null,
     e_id: null,
     employee_firstname: null,
     employee_lastname: null,
@@ -133,12 +134,12 @@ class ReserveItemPage extends Component {
 
   handleUpdate = () => {
     ev.preventDefault()
-    const { rs_id, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed } = this.state
+    const { rs_id, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, additional_notes } = this.state
     let date_in_queue = this.state.date_in_queue
     if (csa !== null && scope !== null && retainer !== null && ccrs !== null && hoa_questionnaire !== null && budget !== null && site_plan !==null && reserve_study !== null && annual_review !== null && income_statement !== null && balance_sheet !== null && date_in_queue === null) {
         date_in_queue = new Date()
     }
-    const updatedInfo = { manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, date_in_queue }
+    const updatedInfo = { manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, date_in_queue, additional_notes }
     HelsingAPIService.updateReserveStudy(rs_id, updatedInfo)
     this.setState({updated: true})
   }
@@ -288,6 +289,8 @@ class ReserveItemPage extends Component {
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
+          <label htmlFor="additional_notes">Additional Notes:</label>
+            <textarea defaultValue={this.state.additional_notes} id="additional_notes" className="additional_notes" rows="4" cols="50" onChange={(e) => this.setState({additional_notes: e.target.value})}/>
         </fieldset>
         <Mailto 
             email={this.state.manager_email}

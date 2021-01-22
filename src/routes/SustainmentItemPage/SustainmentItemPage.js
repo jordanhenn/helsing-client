@@ -11,7 +11,6 @@ class SustainmentItemPage extends Component {
 
   state = {
     s_id: null,
-    date_added: null,
     association: null,
     manager_firstname: null,
     manager_email: null,
@@ -31,6 +30,7 @@ class SustainmentItemPage extends Component {
     yr2_billed_date: null,
     yr3_billed: null,
     sustainment_letter: null,
+    additional_notes: null,
     e_id: null,
     employee_firstname: null,
     employee_lastname: null,
@@ -132,8 +132,8 @@ class SustainmentItemPage extends Component {
 
   handleUpdate = () => {
     ev.preventDefault()
-    const { s_id, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter } = this.state
-    const updatedInfo = { s_id, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter }
+    const { s_id, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes } = this.state
+    const updatedInfo = { manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes }
     HelsingAPIService.updateSustainment(s_id, updatedInfo)
     this.setState({updated: true})
   }
@@ -233,51 +233,38 @@ class SustainmentItemPage extends Component {
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
-          <label htmlFor="yr1_billed">HOA Questionnaire</label>
-          <select defaultValue={this.state.hoa_questionnaire} className="hoa_questionnaire" id="hoa_questionnaire" onChange={(e) => this.setState({hoa_questionnaire: e.target.value})}>
-                <option value={true}>Received</option>
-                <option value={false}>Not Received</option>
-          </select>
-          <label htmlFor="budget">Budget</label>
-          <select defaultValue={this.state.budget} className="budget" id="budget" onChange={(e) => this.setState({budget: e.target.value})}>
-                <option value={true}>Received</option>
-                <option value={false}>Not Received</option>
-          </select>
-          <label htmlFor="site_plan">Site Plan</label>
-          <select defaultValue={this.state.site_plan} className="site_plan" id="site_plan" onChange={(e) => this.setState({site_plan: e.target.value})}>
-                <option value={true}>Received</option>
-                <option value={false}>Not Received</option>
-          </select>
-          <label htmlFor="reserve_study">Previous Reserve Studies</label>
-          <select defaultValue={this.state.reserve_study} className="reserve_study" id="reserve_study" onChange={(e) => this.setState({reserve_study: e.target.value})}>
-                <option value={true}>Received</option>
-                <option value={false}>Not Received</option>
-          </select>
-          <label htmlFor="annual_review">Annual Review</label>
-          <select defaultValue={this.state.annual_review} className="annual_review" id="annual_review" onChange={(e) => this.setState({annual_review: e.target.value})}>
-                <option value={true}>Received</option>
-                <option value={false}>Not Received</option>
-          </select>
-          <label htmlFor="income_statement">Income Statement</label>
-          <select defaultValue={this.state.income_statement} className="income_statement" id="income_statement" onChange={(e) => this.setState({income_statement: e.target.value})}>
-                <option value={true}>Received</option>
-                <option value={false}>Not Received</option>
-          </select>
-          <label htmlFor="balance_sheet">Balance Sheet</label>
-          <select defaultValue={this.state.balance_sheet} className="balance_sheet" id="balance_sheet" onChange={(e) => this.setState({balance_sheet: e.target.value})}>
-                <option value={true}>Received</option>
-                <option value={false}>Not Received</option>
-          </select>
-          <label htmlFor="draft_billed">Draft Billed?</label>
-          <select defaultValue={this.state.draft_billed} className="draft_billed" id="draft_billed" onChange={(e) => this.setState({draft_billed: e.target.value})}>
+          <label htmlFor="yr1_billed">Yr. 1 Billed?</label>
+          <select defaultValue={this.state.yr1_billed} className="yr1_billed" id="yr1_billed" onChange={(e) => this.setState({yr1_billed: e.target.value})}>
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
-          <label htmlFor="final_billed">Final Billed?</label>
-          <select defaultValue={this.state.final_billed} className="final_billed" id="final_billed" onChange={(e) => this.setState({final_billed: e.target.value})}>
+          <label htmlFor="yr2_worksheets">Yr. 2 Worksheets</label>
+          <select defaultValue={this.state.yr2_worksheets} className="yr2_worksheets" id="yr2_worksheets" onChange={(e) => this.setState({yr2_worksheets: e.target.value})}>
+                <option value={true}>Received</option>
+                <option value={false}>Not Received</option>
+          </select>
+          <label htmlFor="yr2_billed">Yr. 2 Billed?</label>
+          <select defaultValue={this.state.yr2_billed} className="yr2_billed" id="yr2_billed" onChange={(e) => this.setState({yr2_billed: e.target.value})}>
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
+          <label htmlFor="yr3_worksheets">Yr. 3 Worksheets</label>
+          <select defaultValue={this.state.yr3_worksheets} className="yr3_worksheets" id="yr3_worksheets" onChange={(e) => this.setState({yr3_worksheets: e.target.value})}>
+                <option value={true}>Received</option>
+                <option value={false}>Not Received</option>
+          </select>
+          <label htmlFor="yr3_billed">Yr. 3 Billed?</label>
+          <select defaultValue={this.state.yr3_billed} className="yr3_billed" id="yr3_billed" onChange={(e) => this.setState({yr3_billed: e.target.value})}>
+                <option value={true}>True</option>
+                <option value={false}>False</option>
+          </select>
+          <label htmlFor="sustainment_letter">Sustainment Letter Sent?</label>
+          <select defaultValue={this.state.sustainment_letter} className="sustainment_letter" id="sustainment_letter" onChange={(e) => this.setState({sustainment_letter: e.target.value})}>
+                <option value={true}>True</option>
+                <option value={false}>False</option>
+          </select>
+          <label htmlFor="additional_notes">Additional Notes:</label>
+            <textarea defaultValue={this.state.additional_notes} id="additional_notes" className="additional_notes" rows="4" cols="50" onChange={(e) => this.setState({additional_notes: e.target.value})}/>
         </fieldset>
         <Mailto 
             email={this.state.manager_email}
