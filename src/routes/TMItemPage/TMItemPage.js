@@ -183,7 +183,7 @@ class TMItemPage extends Component {
                 <option value={false}>False</option>
           </select>
           <label htmlFor="additional_notes">Additional Notes:</label>
-            <textarea defaultValue={this.state.additional_notes} id="additional_notes" className="additional_notes" rows="4" cols="50" onChange={(e) => this.setState({additional_notes: e.target.value})}/>
+            <textarea value={this.state.additional_notes} id="additional_notes" className="additional_notes" rows="4" cols="50" onChange={(e) => this.setState({additional_notes: e.target.value})}/>
         </fieldset>
         <Mailto 
             email={this.state.manager_email}
