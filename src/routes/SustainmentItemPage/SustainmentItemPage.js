@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
+import SustainmentNav from '../../components/SustainmentNav'
 import Mailto from 'reactv16-mailto'
 import './SustainmentItemPage.css'
 
@@ -145,6 +146,7 @@ class SustainmentItemPage extends Component {
   render() {
     return (
         <div>
+        <SustainmentNav/>
         {(!this.state.updated) ?  
         <form className='sustainment' onSubmit={this.handleUpdate}>
         <fieldset>

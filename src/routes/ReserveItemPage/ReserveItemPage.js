@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
+import ReserveNav from '../../components/ReserveNav'
 import Mailto from 'reactv16-mailto'
 import './ReserveItemPage.css'
 
@@ -151,6 +152,7 @@ class ReserveItemPage extends Component {
   render() {
     return (
         <div>
+        <ReserveNav/>
         {(!this.state.updated) ?  
         <form className='reserve-study' onSubmit={this.handleUpdate}>
         <fieldset>

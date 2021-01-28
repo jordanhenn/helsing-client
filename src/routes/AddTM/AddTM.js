@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
+import TMNav from '../../components/TMNav'
 import './AddTM.css'
 
 class AddTM extends Component {
@@ -48,6 +49,7 @@ class AddTM extends Component {
   render() {
     return (
         <div>
+        <TMNav/>
         {(!this.state.submitted) ?  
         <form className='time-and-material' onSubmit={this.handleSubmit}>
         <fieldset>

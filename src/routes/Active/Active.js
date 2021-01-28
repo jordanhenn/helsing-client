@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReserveItem from '../../components/ReserveItem'
+import ReserveNav from '../../components/ReserveNav'
 import './Active.css'
 
 
@@ -36,6 +37,7 @@ class Active extends Component {
   render() {
     return (
       <div className='Active'>
+        <ReserveNav/>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

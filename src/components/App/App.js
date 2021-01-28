@@ -22,8 +22,7 @@ import AddEmployee from '../../routes/AddEmployee/AddEmployee'
 import TMItemPage from '../../routes/TMItemPage/TMItemPage'
 import TMQueue from '../../routes/TMQueue/TMQueue'
 import TMCompleted from '../../routes/TMCompleted/TMCompleted'
-import Nav from '../Nav/Nav'
-import Sidebar from '../Sidebar/Sidebar'
+import MainNav from '../../components/MainNav/MainNav'
 import './App.css'
 
 
@@ -59,13 +58,8 @@ class App extends Component {
       <div className='App'>
         <header className='App__header'>
           <div className='header-styling'>
-          <h1><Link style={{ textDecoration: 'none' }} to={'/'}>HG Reserves Job Tracker</Link></h1>
-          <div className="desktop-nav">
-          <Nav/>
-          </div>
-          <div className="mobile-nav">
-          <Sidebar/>
-          </div>
+          <h1><Link style={{ textDecoration: 'none' }} to={'/'}>HG Job Tracker</Link></h1>
+          <MainNav/>
           </div>
         </header>
         <main className='App__main'>

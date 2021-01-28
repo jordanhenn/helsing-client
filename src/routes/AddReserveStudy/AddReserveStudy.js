@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
+import ReserveNav from '../../components/ReserveNav'
 import './AddReserveStudy.css'
 
 class AddReserveStudy extends Component {
@@ -81,6 +82,7 @@ class AddReserveStudy extends Component {
   render() {
     return (
         <div>
+        <ReserveNav/>
         {(!this.state.submitted) ?  
         <form className='reserve-study' onSubmit={this.handleSubmit}>
         <fieldset>

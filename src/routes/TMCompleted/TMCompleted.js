@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TMItem from '../../components/TMItem'
+import TMNav from '../../components/TMNav'
 import './TMCompleted.css'
 
 
@@ -23,6 +24,7 @@ class TMCompleted extends Component {
   render() {
     return (
       <div className='Completed'>
+        <TMNav/>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

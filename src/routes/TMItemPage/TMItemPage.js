@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
+import TMNav from '../../components/TMNav'
 import Mailto from 'reactv16-mailto'
 import './TMItemPage.css'
 
@@ -98,6 +99,7 @@ class TMItemPage extends Component {
   render() {
     return (
         <div>
+        <TMNav/>
         {(!this.state.updated) ?  
         <form className='time-and-material' onSubmit={this.handleUpdate}>
         <fieldset>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReserveItem from '../../components/ReserveItem'
+import ReserveNav from '../../components/ReserveNav'
 import './Unassigned.css'
 
 
@@ -34,6 +35,7 @@ class Unassigned extends Component {
   render() {
     return (
       <div className='Unassigned'>
+        <ReserveNav/>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

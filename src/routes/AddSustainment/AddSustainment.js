@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
+import SustainmentNav from '../../components/SustainmentNav'
 import './AddSustainment.css'
 
 class AddSustainment extends Component {
@@ -62,6 +63,7 @@ class AddSustainment extends Component {
   render() {
     return (
         <div>
+        <SustainmentNav/>
         {(!this.state.submitted) ?  
         <form className='sustainment' onSubmit={this.handleSubmit}>
         <fieldset>

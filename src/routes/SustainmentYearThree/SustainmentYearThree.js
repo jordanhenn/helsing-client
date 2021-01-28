@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SustainmentItem from '../../components/SustainmentItem'
+import SustainmentNav from '../../components/SustainmentNav'
 import './SustainmentYearThree.css'
 
 
@@ -25,6 +26,7 @@ class SustainmentYearThree extends Component {
   render() {
     return (
       <div className='YearThree'>
+        <SustainmentNav/>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
