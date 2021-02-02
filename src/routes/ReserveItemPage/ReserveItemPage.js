@@ -47,7 +47,7 @@ class ReserveItemPage extends Component {
 
   componentDidMount() {
     const { reservestudyId } = this.props.match.params
-    HelsingAPIService.getRsById(reservestudyId)
+    HelsingAPIService.getRSById(reservestudyId)
       .then(study => {
         this.setState({
           ...study
