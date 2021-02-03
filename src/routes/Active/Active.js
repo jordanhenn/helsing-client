@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReserveItem from '../../components/ReserveItem'
 import ReserveNav from '../../components/ReserveNav'
+import HelsingContext from '../../contexts/HelsingContext'
 import './Active.css'
 
 
@@ -11,6 +12,8 @@ class Active extends Component {
     console.error(error)
     return { hasError: true }
   }
+
+  static contextType = HelsingContext
 
   componentDidMount() {
       const ActiveList = this.context.studies.filter(study => {
@@ -26,12 +29,25 @@ class Active extends Component {
         study.income_statement === true &&
         study.balance_sheet === true &&
         study.assigned_to !== null &&
-        draft_billed_date === null &&
-        final_billed_date === null
+        study.draft_billed_date === null &&
+        study.final_billed_date === null
       })
+
+      if (this.context.searchQuery.length) {
+        const FilteredActiveList = ActiveList.filter(study => {
+          study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number.includes(this.context.searchQuery)
+        })
+        this.setState({
+          studies: FilteredActiveList
+        })
+      }
+
+      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: ActiveList
       })
+    }
   }
 
   render() {

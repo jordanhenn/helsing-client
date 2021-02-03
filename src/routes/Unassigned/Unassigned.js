@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReserveItem from '../../components/ReserveItem'
 import ReserveNav from '../../components/ReserveNav'
+import HelsingContext from '../../contexts/HelsingContext'
 import './Unassigned.css'
 
 
@@ -11,6 +12,8 @@ class Unassigned extends Component {
     console.error(error)
     return { hasError: true }
   }
+
+  static contextType = HelsingContext
 
   componentDidMount() {
       const UnassignedList = this.context.studies.filter(study => {
@@ -27,9 +30,22 @@ class Unassigned extends Component {
         study.balance_sheet === true &&
         study.assigned_to === null
       })
+
+      if (this.context.searchQuery.length) {
+        const FilteredUnassignedList = UnassignedList.filter(study => {
+          study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number.includes(this.context.searchQuery)
+        })
+        this.setState({
+          studies: FilteredUnassignedList
+        })
+      }
+
+      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: UnassignedList
       })
+    }
   }
 
   render() {

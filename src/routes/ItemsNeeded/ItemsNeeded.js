@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReserveItem from '../../components/ReserveItem'
 import ReserveNav from '../../components/ReserveNav'
+import HelsingContext from '../../contexts/HelsingContext'
 import './ItemsNeeded.css'
 
 
@@ -11,6 +12,8 @@ class ItemsNeeded extends Component {
     console.error(error)
     return { hasError: true }
   }
+
+  static contextType = HelsingContext
 
   componentDidMount() {
       const ItemsNeededList = this.context.studies.filter(study => {
@@ -26,9 +29,22 @@ class ItemsNeeded extends Component {
         study.income_statement === false ||
         study.balance_sheet === false
       })
+
+      if (this.context.searchQuery.length) {
+        const FilteredItemsNeededList = ItemsNeededList.filter(study => {
+          study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number.includes(this.context.searchQuery)
+        })
+        this.setState({
+          studies: FilteredItemsNeededList
+        })
+      }
+
+      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: ItemsNeededList
       })
+    }
   }
 
   render() {

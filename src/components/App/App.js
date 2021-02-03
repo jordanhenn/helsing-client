@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch, Link } from 'react-router-dom'
 import HelsingContext from '../../contexts/HelsingContext'
 import HelsingAPIService from '../../services/HelsingAPIService'
+import SearchBar from '../SearchBar/SearchBar'
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 import LandingPage from '../../routes/LandingPage/LandingPage'
 import ReserveItemPage from '../../routes/ReserveItemPage/ReserveItemPage'
@@ -59,6 +60,7 @@ class App extends Component {
         <header className='App__header'>
           <div className='header-styling'>
           <h1><Link style={{ textDecoration: 'none' }} to={'/'}>HG Job Tracker</Link></h1>
+          <SearchBar/>
           <MainNav/>
           </div>
         </header>

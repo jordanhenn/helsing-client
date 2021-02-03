@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TMItem from '../../components/TMItem'
 import TMNav from '../../components/TMNav'
+import HelsingContext from '../../contexts/HelsingContext'
 import './TMQueue.css'
 
 
@@ -12,13 +13,28 @@ class TMQueue extends Component {
     return { hasError: true }
   }
 
+  static contextType = HelsingContext
+
   componentDidMount() {
       const QueueList = this.context.timeAndMaterial.filter(study => {
         study.billed_date === null
       })
+
+      if (this.context.searchQuery.length) {
+        const FilteredQueueList = QueueList.filter(study => {
+          study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number.includes(this.context.searchQuery)
+        })
+        this.setState({
+          studies: FilteredQueueList
+        })
+      }
+
+      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: QueueList
       })
+    }
   }
 
   render() {
