@@ -37,7 +37,8 @@ class SustainmentItemPage extends Component {
     employee_lastname: null,
     employee_email: null,
     employees: [],
-    updated: false
+    updated: false,
+    updatedType: null
   }
 
   componentDidMount() {
@@ -136,11 +137,26 @@ class SustainmentItemPage extends Component {
     const { s_id, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes } = this.state
     const updatedInfo = { manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes }
     HelsingAPIService.updateSustainment(s_id, updatedInfo)
-    this.setState({updated: true})
+    this.setState({
+      updated: true,
+      updatedType: 'update'
+    })
+  }
+
+  handleDelete = () => {
+    const { s_id } = this.state
+    HelsingAPIService.deleteSustainment(s_id)
+    this.setState({
+      updated: true,
+      updatedType: 'delete'
+    })
   }
 
   componentWillUnmount() {
-      this.setState({updated: false})
+    this.setState({
+      updated: false,
+      updatedType: null
+    })
   }
 
   render() {
@@ -286,10 +302,13 @@ class SustainmentItemPage extends Component {
             </Mailto>
         <button className="update" type='submit'>
             UPDATE
-          </button>    
+          </button>
+        <button className="delete" onClick={this.handleDelete}>
+          DELETE
+        </button>    
       </form> :
       <h4>
-          This study has been updated. Please refresh the page to see the changes. 
+          This study has been {this.state.updatedType}. Please refresh the page to see the changes. 
       </h4>
       }
       </div>

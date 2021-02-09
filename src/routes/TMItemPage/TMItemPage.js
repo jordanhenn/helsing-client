@@ -30,7 +30,8 @@ class TMItemPage extends Component {
     employee_lastname: null,
     employee_email: null,
     employees: [],
-    updated: false
+    updated: false,
+    updatedType: null
   }
 
   componentDidMount() {
@@ -89,11 +90,26 @@ class TMItemPage extends Component {
     const { tm_id, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, billed, additional_notes } = this.state
     const updatedInfo = { manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, billed, additional_notes }
     HelsingAPIService.updateTM(tm_id, updatedInfo)
-    this.setState({updated: true})
+    this.setState({
+      updated: true,
+      updatedType: 'update'
+    })
+  }
+
+  handleDelete = () => {
+    const { tm_id } = this.state
+    HelsingAPIService.deleteTM(tm_id)
+    this.setState({
+      updated: true,
+      updatedType: 'delete'
+    })
   }
 
   componentWillUnmount() {
-      this.setState({updated: false})
+    this.setState({
+      updated: false,
+      updatedType: null
+    })
   }
 
   render() {
@@ -205,10 +221,13 @@ class TMItemPage extends Component {
             </Mailto>
         <button className="update" type='submit'>
             UPDATE
-          </button>    
+          </button>
+        <button className="delete" onClick={this.handleDelete}>
+          DELETE
+        </button>    
       </form> :
       <h4>
-          This study has been updated. Please refresh the page to see the changes. 
+          This study has been {this.state.updatedType}. Please refresh the page to see the changes. 
       </h4>
       }
       </div>

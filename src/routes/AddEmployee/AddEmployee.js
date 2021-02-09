@@ -35,7 +35,7 @@ class AddEmployee extends Component {
   }
 
   handleDelete = (employeeId) => {
-      HelsingAPIService.delete(employeeId)
+      HelsingAPIService.deleteEmployee(employeeId)
       this.setState({deleted: true})
   }
 
@@ -56,8 +56,8 @@ class AddEmployee extends Component {
         {!(this.state.deleted) ?
           <ul>
               {this.state.employees.map(employee => {
-                  return
-            (<li className='employee'>
+                  return (
+            <li className='employee'>
                 <p>{employee.employee_firstname} {employee.employee_lastname}</p>
                 <p>{employee.employee_email}</p>
                 <button className='delete-employee' onClick={this.handleDelete(employeeId)}>DELETE</button>

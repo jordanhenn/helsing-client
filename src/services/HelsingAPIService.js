@@ -186,6 +186,58 @@ const HelsingAPIService = {
         ...updatedInfo
       }),
     })
+  },
+  deleteReserveStudy(rs_id) {
+    return fetch(`${config.API_ENDPOINT}/reservestudy/${rs_id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
+  deleteSustainment(s_id) {
+    return fetch(`${config.API_ENDPOINT}/sustainment/${s_id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
+  deleteTM(tm_id) {
+    return fetch(`${config.API_ENDPOINT}/timeandmaterial/${tm_id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
+  deleteEmployee(e_id) {
+    return fetch(`${config.API_ENDPOINT}/employee/${e_id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
   }
 }
 
