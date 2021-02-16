@@ -36,8 +36,8 @@ class AddSustainment extends Component {
 
   handleSubmit = () => {
     ev.preventDefault()
-    const { manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, additional_notes } = this.state
-    const newSustainmentInfo = { manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, additional_notes }
+    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, additional_notes } = this.state
+    const newSustainmentInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, additional_notes }
     HelsingAPIService.addSustainment(newSustainmentInfo)
     this.setState({submitted: true})
   }

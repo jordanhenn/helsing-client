@@ -45,8 +45,8 @@ class AddReserveStudy extends Component {
 
   handleSubmit = () => {
     ev.preventDefault()
-    const { manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, additional_notes } = this.state
-    const newRSInfo = { manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, additional_notes }
+    const { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, additional_notes } = this.state
+    const newRSInfo = { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, additional_notes }
     newRSInfo.date_added = new Date()
     HelsingAPIService.addReserveStudy(newRSInfo)
     this.setState({submitted: true})

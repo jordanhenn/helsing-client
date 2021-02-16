@@ -136,12 +136,12 @@ class ReserveItemPage extends Component {
 
   handleUpdate = () => {
     ev.preventDefault()
-    const { rs_id, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, additional_notes } = this.state
+    const { rs_id, association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, additional_notes } = this.state
     let date_in_queue = this.state.date_in_queue
     if (csa !== null && scope !== null && retainer !== null && ccrs !== null && hoa_questionnaire !== null && budget !== null && site_plan !==null && reserve_study !== null && annual_review !== null && income_statement !== null && balance_sheet !== null && date_in_queue === null) {
         date_in_queue = new Date()
     }
-    const updatedInfo = { manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, date_in_queue, additional_notes }
+    const updatedInfo = { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, date_in_queue, additional_notes }
     HelsingAPIService.updateReserveStudy(rs_id, updatedInfo)
     this.setState({
       updated: true,
