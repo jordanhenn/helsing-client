@@ -36,8 +36,8 @@ class AddTM extends Component {
 
   handleSubmit = () => {
     ev.preventDefault()
-    const { manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, additional_notes } = this.state
-    const newTMInfo = { manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, additional_notes }
+    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, additional_notes } = this.state
+    const newTMInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, additional_notes }
     HelsingAPIService.addTM(newTMInfo)
     this.setState({submitted: true})
   }

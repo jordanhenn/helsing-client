@@ -87,8 +87,8 @@ class TMItemPage extends Component {
 
   handleUpdate = () => {
     ev.preventDefault()
-    const { tm_id, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, billed, additional_notes } = this.state
-    const updatedInfo = { manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, billed, additional_notes }
+    const { tm_id, association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, billed, additional_notes } = this.state
+    const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, billed, additional_notes }
     HelsingAPIService.updateTM(tm_id, updatedInfo)
     this.setState({
       updated: true,
