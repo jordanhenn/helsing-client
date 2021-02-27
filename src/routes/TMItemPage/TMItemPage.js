@@ -20,7 +20,7 @@ class TMItemPage extends Component {
     client_number: null,
     assigned_to: null,
     total_price: null,
-    contract: null,
+    tm_contract: null,
     worksheets: null,
     billed: null,
     billed_date: null,
@@ -57,7 +57,7 @@ class TMItemPage extends Component {
 }
 
   renderManagerEmailBody() {
-    const { worksheets, contract } = this.state
+    const { worksheets } = this.state
     if(!worksheets) {
         const body = `
             Hi ${manager_firstname},
@@ -87,8 +87,8 @@ class TMItemPage extends Component {
 
   handleUpdate = () => {
     ev.preventDefault()
-    const { tm_id, association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, billed, additional_notes } = this.state
-    const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, billed, additional_notes }
+    const { tm_id, association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, tm_contract, worksheets, billed, additional_notes } = this.state
+    const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, tm_contract, worksheets, billed, additional_notes }
     HelsingAPIService.updateTM(tm_id, updatedInfo)
     this.setState({
       updated: true,
@@ -186,7 +186,7 @@ class TMItemPage extends Component {
               })}
           </select>
           <label htmlFor="contract">Contract</label>
-          <select defaultValue={this.state.contract} className="contract" id="contract" onChange={(e) => this.setState({contract: e.target.value})}>
+          <select defaultValue={this.state.tm_contract} className="contract" id="contract" onChange={(e) => this.setState({tm_contract: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>

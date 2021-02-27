@@ -20,7 +20,7 @@ class SustainmentItemPage extends Component {
     client_number: null,
     assigned_to: null,
     total_price: null,
-    contract: null,
+    s_contract: null,
     retainer: null,
     worksheets_yr1: null,
     worksheets_yr2: null,
@@ -134,8 +134,8 @@ class SustainmentItemPage extends Component {
 
   handleUpdate = () => {
     ev.preventDefault()
-    const { s_id, association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes } = this.state
-    const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes }
+    const { s_id, association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, s_contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes } = this.state
+    const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, s_contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes }
     HelsingAPIService.updateSustainment(s_id, updatedInfo)
     this.setState({
       updated: true,
@@ -237,7 +237,7 @@ class SustainmentItemPage extends Component {
               })}
           </select>
           <label htmlFor="contract">Contract</label>
-          <select defaultValue={this.state.contract} className="contract" id="contract" onChange={(e) => this.setState({contract: e.target.value})}>
+          <select defaultValue={this.state.s_contract} className="contract" id="contract" onChange={(e) => this.setState({s_contract: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>

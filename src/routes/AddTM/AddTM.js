@@ -17,7 +17,7 @@ class AddTM extends Component {
     client_number: null,
     assigned_to: null,
     total_price: null,
-    contract: false,
+    tm_contract: false,
     worksheets: false,
     additional_notes: null,
     e_id: null,
@@ -36,8 +36,8 @@ class AddTM extends Component {
 
   handleSubmit = () => {
     ev.preventDefault()
-    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, additional_notes } = this.state
-    const newTMInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, additional_notes }
+    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, tm_contract, worksheets, additional_notes } = this.state
+    const newTMInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, tm_contract, worksheets, additional_notes }
     HelsingAPIService.addTM(newTMInfo)
     this.setState({submitted: true})
   }
@@ -117,7 +117,7 @@ class AddTM extends Component {
               })}
           </select>
           <label htmlFor="contract">Contract</label>
-          <select defaultValue={this.state.contract} className="contract" id="contract" onChange={(e) => this.setState({contract: e.target.value})}>
+          <select defaultValue={this.state.tm_contract} className="contract" id="contract" onChange={(e) => this.setState({tm_contract: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>

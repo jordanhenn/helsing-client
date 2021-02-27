@@ -17,7 +17,7 @@ class AddSustainment extends Component {
     client_number: null,
     assigned_to: null,
     total_price: null,
-    contract: false,
+    s_contract: false,
     retainer: false,
     additional_notes: null,
     e_id: null,
@@ -36,8 +36,8 @@ class AddSustainment extends Component {
 
   handleSubmit = () => {
     ev.preventDefault()
-    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, additional_notes } = this.state
-    const newSustainmentInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, additional_notes }
+    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, s_contract, retainer, additional_notes } = this.state
+    const newSustainmentInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, s_contract, retainer, additional_notes }
     HelsingAPIService.addSustainment(newSustainmentInfo)
     this.setState({submitted: true})
   }
@@ -51,7 +51,7 @@ class AddSustainment extends Component {
         client_number: null,
         assigned_to: null,
         total_price: null,
-        contract: null,
+        s_contract: null,
         retainer: null,
         additional_notes: null,
         e_id: null,
@@ -131,7 +131,7 @@ class AddSustainment extends Component {
               })}
           </select>
           <label htmlFor="contract">Contract</label>
-          <select defaultValue={this.state.contract} className="contract" id="contract" onChange={(e) => this.setState({contract: e.target.value})}>
+          <select defaultValue={this.state.s_contract} className="contract" id="contract" onChange={(e) => this.setState({s_contract: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
