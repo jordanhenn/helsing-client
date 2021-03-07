@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
-import ReserveNav from '../../components/ReserveNav'
+import ReserveNav from '../../components/ReserveNav/ReserveNav'
 import './AddReserveStudy.css'
 
 class AddReserveStudy extends Component {

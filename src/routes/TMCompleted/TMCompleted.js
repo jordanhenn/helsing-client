@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import TMItem from '../../components/TMItem'
-import TMNav from '../../components/TMNav'
+import TMItem from '../../components/TMItem/TMItem'
+import TMNav from '../../components/TMNav/TMNav'
 import HelsingContext from '../../contexts/HelsingContext'
 import './TMCompleted.css'
 

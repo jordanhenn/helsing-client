@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
-import TMNav from '../../components/TMNav'
+import TMNav from '../../components/TMNav/TMNav'
 import Mailto from 'reactv16-mailto'
 import './TMItemPage.css'
 

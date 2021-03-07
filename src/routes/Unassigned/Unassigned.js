@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ReserveItem from '../../components/ReserveItem'
-import ReserveNav from '../../components/ReserveNav'
+import ReserveItem from '../../components/ReserveItem/ReserveItem'
+import ReserveNav from '../../components/ReserveNav/ReserveNav'
 import HelsingContext from '../../contexts/HelsingContext'
 import './Unassigned.css'
 

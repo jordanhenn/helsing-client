@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
-import SustainmentNav from '../../components/SustainmentNav'
+import SustainmentNav from '../../components/SustainmentNav/SustainmentNav'
 import Mailto from 'reactv16-mailto'
 import './SustainmentItemPage.css'
 

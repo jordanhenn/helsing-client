@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
-import TMNav from '../../components/TMNav'
+import TMNav from '../../components/TMNav/TMNav'
 import './AddTM.css'
 
 class AddTM extends Component {

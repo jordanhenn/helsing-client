@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import SustainmentItem from '../../components/SustainmentItem'
-import SustainmentNav from '../../components/SustainmentNav'
+import SustainmentItem from '../../components/SustainmentItem/SustainmentItem'
+import SustainmentNav from '../../components/SustainmentNav/SustainmentNav'
 import HelsingContext from '../../contexts/HelsingContext'
 import './SustainmentYearTwo.css'
 
