@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
-import ReserveNav from '../../components/ReserveNav'
+import ReserveNav from '../../components/ReserveNav/ReserveNav'
 import Mailto from 'reactv16-mailto'
 import './ReserveItemPage.css'
 
