@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
-import './AddEmployeee.css'
+import './AddEmployee.css'
 
 class AddEmployee extends Component {
 
