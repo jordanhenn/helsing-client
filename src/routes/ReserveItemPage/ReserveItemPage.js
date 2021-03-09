@@ -85,7 +85,7 @@ class ReserveItemPage extends Component {
     }
     for (let i=0; i < items.length; i++) {
         if(!this.state[items[i]]) {
-            items.splice[i, 1]
+            items = items.splice[i, 1]
         }
     }
 
@@ -134,7 +134,7 @@ class ReserveItemPage extends Component {
     }
   }
 
-  handleUpdate = () => {
+  handleUpdate = (ev) => {
     ev.preventDefault()
     const { rs_id, association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, additional_notes } = this.state
     let date_in_queue = this.state.date_in_queue

@@ -25,7 +25,7 @@ class SustainmentCompleted extends Component {
       })
 
       if (this.context.searchQuery.length) {
-        const FilteredCompletedList = CompeletedList.filter(study => {
+        const FilteredCompletedList = CompletedList.filter(study => {
           if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
           study.client_number.includes(this.context.searchQuery)) {
             return study

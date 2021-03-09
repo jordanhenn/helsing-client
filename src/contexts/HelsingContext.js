@@ -12,7 +12,7 @@ const HelsingContext = React.createContext({
   setTimeAndMaterial: () => {}
 })
 
-export default Helsingcontext
+export default HelsingContext
 
 export class HelsingProvider extends Component {
   constructor(props) {

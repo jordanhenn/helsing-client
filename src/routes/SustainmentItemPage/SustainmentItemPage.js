@@ -132,7 +132,7 @@ class SustainmentItemPage extends Component {
     }
   }
 
-  handleUpdate = () => {
+  handleUpdate = (ev) => {
     ev.preventDefault()
     const { s_id, association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, s_contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes } = this.state
     const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, s_contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes }

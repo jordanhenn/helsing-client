@@ -27,10 +27,10 @@ class SustainmentItem extends Component {
         <ul className='sustainment-item-style'>
             <Link style={{ textDecoration: 'none' }}to={`/sustainment/${props.s_id}`}>
             <div className='sustainment-item'>
-                <p>{props.date_added}</p>
-                <p>{props.association}</p>
-                <p>{props.client_number}</p>
-                <p>{props.total_price}</p>
+                <p>{this.props.date_added}</p>
+                <p>{this.props.association}</p>
+                <p>{this.props.client_number}</p>
+                <p>{this.props.total_price}</p>
                 {(this.state.employee) ? 
                 <p>Assigned to: {this.state.employee.employee_firstname}</p>
                 : <p>Unassigned</p>

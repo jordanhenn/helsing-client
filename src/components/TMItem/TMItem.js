@@ -25,9 +25,9 @@ class TMItem extends Component {
         <ul className='tm-item-style'>
             <Link style={{ textDecoration: 'none' }}to={`/timeandmaterial/${props.tm_id}`}>
             <div className='tm-item'>
-                <p>{props.date_added}</p>
-                <p>{props.association}</p>
-                <p>{props.client_number}</p>
+                <p>{this.props.date_added}</p>
+                <p>{this.props.association}</p>
+                <p>{this.props.client_number}</p>
                 {(this.state.employee) ? 
                 <p>Assigned to: {this.state.employee.employee_firstname}</p>
                 : <p>Unassigned</p>
