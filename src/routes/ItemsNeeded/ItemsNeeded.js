@@ -17,7 +17,7 @@ class ItemsNeeded extends Component {
 
   componentDidMount() {
       const ItemsNeededList = this.context.studies.filter(study => {
-        study.csa === false ||
+        if(study.csa === false ||
         study.scope === false ||
         study.retainer === false ||
         study.ccrs === false ||
@@ -27,13 +27,17 @@ class ItemsNeeded extends Component {
         study.reserve_study === false ||
         study.annual_review === false ||
         study.income_statement === false ||
-        study.balance_sheet === false
+        study.balance_sheet === false) {
+          return study
+        }
       })
 
       if (this.context.searchQuery.length) {
         const FilteredItemsNeededList = ItemsNeededList.filter(study => {
-          study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)
+          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
         })
         this.setState({
           studies: FilteredItemsNeededList

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import HelsingAPIService from '../../services/HelsingAPIService'
 import ReserveNav from '../../components/ReserveNav/ReserveNav'
 import './AddReserveStudy.css'
@@ -43,7 +44,7 @@ class AddReserveStudy extends Component {
       })
 }
 
-  handleSubmit = () => {
+  handleSubmit = (ev) => {
     ev.preventDefault()
     const { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, additional_notes } = this.state
     const newRSInfo = { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, additional_notes }

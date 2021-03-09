@@ -17,7 +17,7 @@ class Unassigned extends Component {
 
   componentDidMount() {
       const UnassignedList = this.context.studies.filter(study => {
-        study.csa === true &&
+        if(study.csa === true &&
         study.scope === true &&
         study.retainer === true &&
         study.ccrs === true &&
@@ -28,13 +28,17 @@ class Unassigned extends Component {
         study.annual_review === true &&
         study.income_statement === true &&
         study.balance_sheet === true &&
-        study.assigned_to === null
+        study.assigned_to === null) {
+          return study
+        }
       })
 
       if (this.context.searchQuery.length) {
         const FilteredUnassignedList = UnassignedList.filter(study => {
-          study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)
+          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number.includes(this.context.searchQuery)){
+            return study
+          }
         })
         this.setState({
           studies: FilteredUnassignedList

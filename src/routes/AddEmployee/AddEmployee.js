@@ -26,7 +26,7 @@ class AddEmployee extends Component {
       })
 }
 
-  handleSubmit = () => {
+  handleSubmit = (ev) => {
     ev.preventDefault()
     const { newEmployeeFirstName, newEmployeeLastName, newEmployeeEmail } = this.state
     const newEmployeeInfo = { newEmployeeFirstName, newEmployeeLastName, newEmployeeEmail }
@@ -60,7 +60,7 @@ class AddEmployee extends Component {
             <li className='employee'>
                 <p>{employee.employee_firstname} {employee.employee_lastname}</p>
                 <p>{employee.employee_email}</p>
-                <button className='delete-employee' onClick={this.handleDelete(employeeId)}>DELETE</button>
+                <button className='delete-employee' onClick={this.handleDelete(employee.e_id)}>DELETE</button>
             </li>)
           })}
           </ul>

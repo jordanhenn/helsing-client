@@ -17,7 +17,7 @@ class Active extends Component {
 
   componentDidMount() {
       const ActiveList = this.context.studies.filter(study => {
-        study.csa === true &&
+        if(study.csa === true &&
         study.scope === true &&
         study.retainer === true &&
         study.ccrs === true &&
@@ -30,13 +30,17 @@ class Active extends Component {
         study.balance_sheet === true &&
         study.assigned_to !== null &&
         study.draft_billed_date === null &&
-        study.final_billed_date === null
+        study.final_billed_date === null) {
+          return study
+        }
       })
 
       if (this.context.searchQuery.length) {
         const FilteredActiveList = ActiveList.filter(study => {
-          study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)
+          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
         })
         this.setState({
           studies: FilteredActiveList

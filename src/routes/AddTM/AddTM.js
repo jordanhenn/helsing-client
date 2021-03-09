@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import HelsingAPIService from '../../services/HelsingAPIService'
 import TMNav from '../../components/TMNav/TMNav'
 import './AddTM.css'
@@ -34,7 +35,7 @@ class AddTM extends Component {
         })
 }
 
-  handleSubmit = () => {
+  handleSubmit = (ev) => {
     ev.preventDefault()
     const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, tm_contract, worksheets, additional_notes } = this.state
     const newTMInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, tm_contract, worksheets, additional_notes }

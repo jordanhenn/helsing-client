@@ -17,14 +17,18 @@ class Completed extends Component {
 
   componentDidMount() {
       const CompletedList = this.context.studies.filter(study => {
-        study.draft_billed_date !== null &&
-        study.final_billed_date !== null
+        if(study.draft_billed_date !== null &&
+        study.final_billed_date !== null) {
+          return study
+        }
       })
 
       if (this.context.searchQuery.length) {
         const FilteredCompletedList = CompletedList.filter(study => {
-          study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)
+          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
         })
         this.setState({
           studies: FilteredCompletedList

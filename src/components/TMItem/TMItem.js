@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import HelsingAPIService from '../../services/HelsingAPIService'
 import { Link } from 'react-router-dom';
 import './TMItem.css';

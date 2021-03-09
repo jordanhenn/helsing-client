@@ -17,15 +17,19 @@ class SustainmentYearThree extends Component {
 
   componentDidMount() {
       const YearThreeList = this.context.sustainment.filter(study => {
-        study.yr1_billed !== null &&
+        if(study.yr1_billed !== null &&
         study.yr2_billed !== null &&
-        study.yr3_billed === null
+        study.yr3_billed === null) {
+          return study
+        }
       })
 
       if (this.context.searchQuery.length) {
         const FilteredYearThreeList = YearThreeList.filter(study => {
-          study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)
+          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
         })
         this.setState({
           studies: FilteredYearThreeList

@@ -57,7 +57,7 @@ class TMItemPage extends Component {
 }
 
   renderManagerEmailBody() {
-    const { worksheets } = this.state
+    const { worksheets, manager_firstname, association } = this.state
     if(!worksheets) {
         const body = `
             Hi ${manager_firstname},
@@ -85,7 +85,7 @@ class TMItemPage extends Component {
     }
   }
 
-  handleUpdate = () => {
+  handleUpdate = (ev) => {
     ev.preventDefault()
     const { tm_id, association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, tm_contract, worksheets, billed, additional_notes } = this.state
     const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, tm_contract, worksheets, billed, additional_notes }
