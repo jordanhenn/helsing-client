@@ -25,7 +25,7 @@ class ReserveItem extends Component {
     render() {
       return (
         <ul className='reserve-item-style'>
-            <Link style={{ textDecoration: 'none' }}to={`/reservestudies/${props.rs_id}`}>
+            <Link style={{ textDecoration: 'none' }}to={`/reservestudies/${this.props.rs_id}`}>
             <div className='reserve-item'>
                 <p>{this.props.date_added}</p>
                 <p>{this.props.association}</p>

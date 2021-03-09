@@ -25,7 +25,7 @@ class SustainmentItem extends Component {
     render() {
       return (
         <ul className='sustainment-item-style'>
-            <Link style={{ textDecoration: 'none' }}to={`/sustainment/${props.s_id}`}>
+            <Link style={{ textDecoration: 'none' }}to={`/sustainment/${this.props.s_id}`}>
             <div className='sustainment-item'>
                 <p>{this.props.date_added}</p>
                 <p>{this.props.association}</p>

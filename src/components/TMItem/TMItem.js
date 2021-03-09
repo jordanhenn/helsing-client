@@ -23,7 +23,7 @@ class TMItem extends Component {
     render() {
       return (
         <ul className='tm-item-style'>
-            <Link style={{ textDecoration: 'none' }}to={`/timeandmaterial/${props.tm_id}`}>
+            <Link style={{ textDecoration: 'none' }}to={`/timeandmaterial/${this.props.tm_id}`}>
             <div className='tm-item'>
                 <p>{this.props.date_added}</p>
                 <p>{this.props.association}</p>
