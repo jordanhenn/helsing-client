@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 const HelsingContext = React.createContext({
-  searchQuery: null,
+  searchQuery: '',
   studies: [],
   sustainment: [],
   timeAndMaterial: [],
@@ -19,7 +19,7 @@ export class HelsingProvider extends Component {
     super(props);
     this.state = 
       props.testState || {
-        searchQuery: null,
+        searchQuery: '',
         studies: [],
         sustainment: [],
         timeAndMaterial: []
