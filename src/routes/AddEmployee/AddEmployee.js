@@ -46,7 +46,7 @@ class AddEmployee extends Component {
         newEmployeeLastName: null,
         newEmployeeEmail: null,
         submitted: false,
-        deleted: true
+        deleted: false
     })
   }
 
