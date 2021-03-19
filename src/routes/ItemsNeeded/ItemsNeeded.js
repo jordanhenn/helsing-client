@@ -27,7 +27,18 @@ class ItemsNeeded extends Component {
         study.reserve_study === false ||
         study.annual_review === false ||
         study.income_statement === false ||
-        study.balance_sheet === false) {
+        study.balance_sheet === false ||
+        study.csa === null ||
+        study.scope === null ||
+        study.retainer === null ||
+        study.ccrs === null ||
+        study.questionnaire === null ||
+        study.budget === null ||
+        study.site_plan === null ||
+        study.reserve_study === null ||
+        study.annual_review === null ||
+        study.income_statement === null ||
+        study.balance_sheet === null) {
           return study
         }
       })

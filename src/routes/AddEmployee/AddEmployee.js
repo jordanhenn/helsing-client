@@ -60,7 +60,7 @@ class AddEmployee extends Component {
             <li className='employee'>
                 <p>{employee.employee_firstname} {employee.employee_lastname}</p>
                 <p>{employee.employee_email}</p>
-                <button className='delete-employee' onClick={this.handleDelete(employee.e_id)}>DELETE</button>
+                <button className='delete-employee' onClick={() => this.handleDelete(employee.e_id)}>DELETE</button>
             </li>)
           })}
           </ul>
