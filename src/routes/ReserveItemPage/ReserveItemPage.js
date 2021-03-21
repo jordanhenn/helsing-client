@@ -70,6 +70,7 @@ class ReserveItemPage extends Component {
 
   renderManagerEmailBody() {
     const items = ['csa', 'scope', 'retainer', 'ccrs', 'hoa_questionnaire', 'budget', 'site_plan', 'reserve_study', 'annual_review', 'income_statement', 'balance_sheet']
+    const newItems = []
     const itemNames = {
         csa: 'Consulting Services Agreement',
         scope: 'Scope',
@@ -84,19 +85,19 @@ class ReserveItemPage extends Component {
         balance_sheet: 'Balance Sheet'
     }
     for (let i=0; i < items.length; i++) {
-        if(!this.state[items[i]]) {
-            items = items.splice[i, 1]
+        if(!this.state[items[i]] || this.state[items[i]] == null) {
+            newItems.push(items[i])
         }
     }
 
-    if(items.length > 0) {
+    if(newItems.length > 0) {
         let list = ''
-        for (let i=0; i < items.length; i++) {
-            if (i=0) {
-                list += itemNames[items[i]]
+        for (let i=0; i < newItems.length; i++) {
+            if (i === 0) {
+                list += itemNames[newItems[i]]
             }
             else {
-                list+= `, ${itemNames[items[i]]}`
+                list += `, ${itemNames[newItems[i]]}`
             }
         }
         let body = `
@@ -120,7 +121,7 @@ class ReserveItemPage extends Component {
         let body = `
             Hi ${this.state.employee_firstname},
 
-            Do you have a status update for ${this.state.association}? Are we ready to proceed with billing the draft?
+            Do you have a status update for ${this.state.association}? Are we ready to proceed with billing?
         `
         return body
     }
@@ -145,7 +146,7 @@ class ReserveItemPage extends Component {
     HelsingAPIService.updateReserveStudy(rs_id, updatedInfo)
     this.setState({
       updated: true,
-      updatedType: 'update'
+      updatedType: 'updated'
     })
   }
 
@@ -154,7 +155,7 @@ class ReserveItemPage extends Component {
     HelsingAPIService.deleteReserveStudy(rs_id)
     this.setState({
       updated: true,
-      updatedType: 'delete'
+      updatedType: 'deleted'
     })
   }
 
@@ -235,7 +236,8 @@ class ReserveItemPage extends Component {
                 type='text'
                 id='manager_email'/>
           <label htmlFor="assigned_to">Assigned to:</label>
-          <select defaultValue={this.state.e_id} className="assigned_to" id="assigned_to" onChange={(e) => this.setState({e_id: e.target.value})}>
+          <select value={(this.state.assigned_to === null) ? false : this.state.assigned_to} className="assigned_to" id="assigned_to" onChange={(e) => this.setState({assigned_to: e.target.value})}>
+              <option value={false}>Not Assigned</option>
               {this.state.employees.map(employee => {
                   return (
                       <option value={employee.e_id}>{employee.employee_firstname}</option>
@@ -243,67 +245,67 @@ class ReserveItemPage extends Component {
               })}
           </select>
           <label htmlFor="csa">CSA</label>
-          <select defaultValue={this.state.csa} className="csa" id="csa" onChange={(e) => this.setState({csa: e.target.value})}>
+          <select value={(this.state.csa === null) ? false : this.state.csa} className="csa" id="csa" onChange={(e) => this.setState({csa: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="scope">Scope</label>
-          <select defaultValue={this.state.scope} className="scope" id="scope" onChange={(e) => this.setState({scope: e.target.value})}>
+          <select value={(this.state.scope === null) ? false : this.state.csa} className="scope" id="scope" onChange={(e) => this.setState({scope: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="retainer">Retainer</label>
-          <select defaultValue={this.state.retainer} className="retainer" id="retainer" onChange={(e) => this.setState({retainer: e.target.value})}>
+          <select value={(this.state.retainer === null) ? false : this.state.retainer} className="retainer" id="retainer" onChange={(e) => this.setState({retainer: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="ccrs">{'CC&Rs'}</label>
-          <select defaultValue={this.state.ccrs} className="ccrs" id="ccrs" onChange={(e) => this.setState({ccrs: e.target.value})}>
+          <select value={(this.state.ccrs === null) ? false : this.state.ccrs} className="ccrs" id="ccrs" onChange={(e) => this.setState({ccrs: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="hoa_questionnaire">HOA Questionnaire</label>
-          <select defaultValue={this.state.hoa_questionnaire} className="hoa_questionnaire" id="hoa_questionnaire" onChange={(e) => this.setState({hoa_questionnaire: e.target.value})}>
+          <select value={(this.state.hoa_questionnaire === null) ? false : this.state.hoa_questionnaire} className="hoa_questionnaire" id="hoa_questionnaire" onChange={(e) => this.setState({hoa_questionnaire: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="budget">Budget</label>
-          <select defaultValue={this.state.budget} className="budget" id="budget" onChange={(e) => this.setState({budget: e.target.value})}>
+          <select value={(this.state.budget === null) ? false : this.state.budget} className="budget" id="budget" onChange={(e) => this.setState({budget: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="site_plan">Site Plan</label>
-          <select defaultValue={this.state.site_plan} className="site_plan" id="site_plan" onChange={(e) => this.setState({site_plan: e.target.value})}>
+          <select value={(this.state.site_plan === null) ? false : this.state.site_plan} className="site_plan" id="site_plan" onChange={(e) => this.setState({site_plan: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="reserve_study">Previous Reserve Studies</label>
-          <select defaultValue={this.state.reserve_study} className="reserve_study" id="reserve_study" onChange={(e) => this.setState({reserve_study: e.target.value})}>
+          <select value={(this.state.reserve_study === null) ? false : this.state.reserve_study} className="reserve_study" id="reserve_study" onChange={(e) => this.setState({reserve_study: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="annual_review">Annual Review</label>
-          <select defaultValue={this.state.annual_review} className="annual_review" id="annual_review" onChange={(e) => this.setState({annual_review: e.target.value})}>
+          <select value={(this.state.annual_review === null) ? false : this.state.annual_review} className="annual_review" id="annual_review" onChange={(e) => this.setState({annual_review: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="income_statement">Income Statement</label>
-          <select defaultValue={this.state.income_statement} className="income_statement" id="income_statement" onChange={(e) => this.setState({income_statement: e.target.value})}>
+          <select value={(this.state.income_statement === null) ? false : this.state.income_statement} className="income_statement" id="income_statement" onChange={(e) => this.setState({income_statement: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="balance_sheet">Balance Sheet</label>
-          <select defaultValue={this.state.balance_sheet} className="balance_sheet" id="balance_sheet" onChange={(e) => this.setState({balance_sheet: e.target.value})}>
+          <select value={(this.state.balance_sheet === null) ? false : this.state.balance_sheet} className="balance_sheet" id="balance_sheet" onChange={(e) => this.setState({balance_sheet: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="draft_billed">Draft Billed?</label>
-          <select defaultValue={this.state.draft_billed} className="draft_billed" id="draft_billed" onChange={(e) => this.setState({draft_billed: e.target.value})}>
+          <select value={(this.state.draft_billed === null) ? false : this.state.draft_billed} className="draft_billed" id="draft_billed" onChange={(e) => this.setState({draft_billed: e.target.value})}>
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
           <label htmlFor="final_billed">Final Billed?</label>
-          <select defaultValue={this.state.final_billed} className="final_billed" id="final_billed" onChange={(e) => this.setState({final_billed: e.target.value})}>
+          <select value={(this.state.final_billed === null) ? false : this.state.final_billed} className="final_billed" id="final_billed" onChange={(e) => this.setState({final_billed: e.target.value})}>
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
