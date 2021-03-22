@@ -41,12 +41,14 @@ class TMItemPage extends Component {
         this.setState({
           ...study
         })
+        if(study.assigned_to !== null) {
         HelsingAPIService.getEmployeeById(study.assigned_to)
         .then(employee => {
           this.setState({
           ...employee
       })
     })
+  }
     HelsingAPIService.getAllEmployees()
         .then(employees => {
             this.setState({
@@ -178,7 +180,7 @@ class TMItemPage extends Component {
                 type='text'
                 id='manager_email'/>
           <label htmlFor="assigned_to">Assigned to:</label>
-          <select defaultValue={this.state.e_id || false} className="assigned_to" id="assigned_to" onChange={(e) => this.setState({e_id: e.target.value})}>
+          <select value={this.state.assigned_to} className="assigned_to" id="assigned_to" onChange={(e) => this.setState({assigned_to: e.target.value})}>
           <option value={false}>Not Assigned</option>
               {this.state.employees.map(employee => {
                   return (
@@ -187,17 +189,17 @@ class TMItemPage extends Component {
               })}
           </select>
           <label htmlFor="contract">Contract</label>
-          <select defaultValue={this.state.tm_contract || false} className="contract" id="contract" onChange={(e) => this.setState({tm_contract: e.target.value})}>
+          <select value={(this.state.tm_contract === null) ? false : this.state.tm_contract} className="contract" id="contract" onChange={(e) => this.setState({tm_contract: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="worksheets">Worksheets</label>
-          <select defaultValue={this.state.worksheets || false} className="worksheets" id="worksheets" onChange={(e) => this.setState({worksheets: e.target.value})}>
+          <select value={(this.state.worksheets === null) ? false : this.state.worksheets} className="worksheets" id="worksheets" onChange={(e) => this.setState({worksheets: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="billed">Billed?</label>
-          <select defaultValue={this.state.billed || false} className="billed" id="billed" onChange={(e) => this.setState({billed: e.target.value})}>
+          <select value={(this.state.billed === null) ? false : this.state.billed} className="billed" id="billed" onChange={(e) => this.setState({billed: e.target.value})}>
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>

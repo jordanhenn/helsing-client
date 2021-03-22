@@ -16,12 +16,13 @@ class Unassigned extends Component {
   static contextType = HelsingContext
 
   componentDidMount() {
+    console.log(this.context.studies)
       const UnassignedList = this.context.studies.filter(study => {
         if(study.csa === true &&
         study.scope === true &&
         study.retainer === true &&
         study.ccrs === true &&
-        study.questionnaire === true &&
+        study.hoa_questionnaire === true &&
         study.budget === true &&
         study.site_plan === true &&
         study.reserve_study === true &&
@@ -32,6 +33,8 @@ class Unassigned extends Component {
           return study
         }
       })
+
+      console.log(UnassignedList)
 
       if (this.context.searchQuery.length) {
         const FilteredUnassignedList = UnassignedList.filter(study => {

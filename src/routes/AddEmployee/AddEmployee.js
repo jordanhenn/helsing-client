@@ -10,9 +10,9 @@ class AddEmployee extends Component {
 
   state = {
     employees: [],
-    newEmployeeFirstName: null,
-    newEmployeeLastName: null,
-    newEmployeeEmail: null,
+    employee_email: null,
+    employee_firstname: null,
+    employee_lastname: null,
     submitted: false,
     deleted: false
   }
@@ -28,8 +28,8 @@ class AddEmployee extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    const { newEmployeeFirstName, newEmployeeLastName, newEmployeeEmail } = this.state
-    const newEmployeeInfo = { newEmployeeFirstName, newEmployeeLastName, newEmployeeEmail }
+    const { employee_email, employee_lastname, employee_firstname } = this.state
+    const newEmployeeInfo = { employee_email, employee_lastname, employee_firstname }
     HelsingAPIService.addEmployee(newEmployeeInfo)
     this.setState({submitted: true})
   }

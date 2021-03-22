@@ -21,7 +21,7 @@ class Active extends Component {
         study.scope === true &&
         study.retainer === true &&
         study.ccrs === true &&
-        study.questionnaire === true &&
+        study.hoa_questionnaire === true &&
         study.budget === true &&
         study.site_plan === true &&
         study.reserve_study === true &&

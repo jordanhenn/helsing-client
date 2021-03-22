@@ -53,12 +53,14 @@ class ReserveItemPage extends Component {
         this.setState({
           ...study
         })
+        if(study.assigned_to !== null) {
         HelsingAPIService.getEmployeeById(study.assigned_to)
         .then(employee => {
           this.setState({
           ...employee
       })
     })
+  }
     HelsingAPIService.getAllEmployees()
         .then(employees => {
             this.setState({
@@ -139,7 +141,7 @@ class ReserveItemPage extends Component {
     ev.preventDefault()
     const { rs_id, association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, additional_notes } = this.state
     let date_in_queue = this.state.date_in_queue
-    if (csa !== null && scope !== null && retainer !== null && ccrs !== null && hoa_questionnaire !== null && budget !== null && site_plan !==null && reserve_study !== null && annual_review !== null && income_statement !== null && balance_sheet !== null && date_in_queue === null) {
+    if (csa !== false && scope !== false && retainer !== false && ccrs !== false && hoa_questionnaire !== false && budget !== false && site_plan !== false && reserve_study !== false && annual_review !== false && income_statement !== false && balance_sheet !== false && date_in_queue === null) {
         date_in_queue = new Date()
     }
     const updatedInfo = { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, date_in_queue, additional_notes }
@@ -236,8 +238,8 @@ class ReserveItemPage extends Component {
                 type='text'
                 id='manager_email'/>
           <label htmlFor="assigned_to">Assigned to:</label>
-          <select value={(this.state.assigned_to === null) ? false : this.state.assigned_to} className="assigned_to" id="assigned_to" onChange={(e) => this.setState({assigned_to: e.target.value})}>
-              <option value={false}>Not Assigned</option>
+          <select value={this.state.assigned_to} className="assigned_to" id="assigned_to" onChange={(e) => this.setState({assigned_to: e.target.value})}>
+              <option value={null}>Not Assigned</option>
               {this.state.employees.map(employee => {
                   return (
                       <option value={employee.e_id}>{employee.employee_firstname}</option>

@@ -48,12 +48,14 @@ class SustainmentItemPage extends Component {
         this.setState({
           ...study
         })
+        if(study.assigned_to !== null) {
         HelsingAPIService.getEmployeeById(study.assigned_to)
         .then(employee => {
           this.setState({
           ...employee
       })
     })
+  }
     HelsingAPIService.getAllEmployees()
         .then(employees => {
             this.setState({
@@ -229,8 +231,8 @@ class SustainmentItemPage extends Component {
                 type='text'
                 id='manager_email'/>
           <label htmlFor="assigned_to">Assigned to:</label>
-          <select defaultValue={this.state.e_id || false} className="assigned_to" id="assigned_to" onChange={(e) => this.setState({e_id: e.target.value})}>
-          <option value={false}>Not Assigned</option>
+          <select value={this.state.assigned_to} className="assigned_to" id="assigned_to" onChange={(e) => this.setState({assigned_to: e.target.value})}>
+          <option value={null}>Not Assigned</option>
               {this.state.employees.map(employee => {
                   return (
                       <option value={employee.e_id}>{employee.employee_firstname}</option>
@@ -238,47 +240,47 @@ class SustainmentItemPage extends Component {
               })}
           </select>
           <label htmlFor="contract">Contract</label>
-          <select defaultValue={this.state.s_contract || false} className="contract" id="contract" onChange={(e) => this.setState({s_contract: e.target.value})}>
+          <select value={(this.state.s_contract === null) ? false : this.state.s_contract} className="contract" id="contract" onChange={(e) => this.setState({s_contract: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="retainer">Retainer</label>
-          <select defaultValue={this.state.retainer || false} className="retainer" id="retainer" onChange={(e) => this.setState({retainer: e.target.value})}>
+          <select value={(this.state.retainer === null) ? false : this.state.retainer} className="retainer" id="retainer" onChange={(e) => this.setState({retainer: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="yr1_worksheets">Yr. 1 Worksheets</label>
-          <select defaultValue={this.state.yr1_worksheets || false} className="yr1_worksheets" id="yr1_worksheets" onChange={(e) => this.setState({yr1_worksheets: e.target.value})}>
+          <select value={(this.state.yr1_worksheets === null) ? false : this.state.yr1_worksehets} className="yr1_worksheets" id="yr1_worksheets" onChange={(e) => this.setState({yr1_worksheets: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="yr1_billed">Yr. 1 Billed?</label>
-          <select defaultValue={this.state.yr1_billed || false} className="yr1_billed" id="yr1_billed" onChange={(e) => this.setState({yr1_billed: e.target.value})}>
+          <select value={(this.state.yr1_billed === null) ? false : this.state.yr1_billed} className="yr1_billed" id="yr1_billed" onChange={(e) => this.setState({yr1_billed: e.target.value})}>
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
           <label htmlFor="yr2_worksheets">Yr. 2 Worksheets</label>
-          <select defaultValue={this.state.yr2_worksheets || false} className="yr2_worksheets" id="yr2_worksheets" onChange={(e) => this.setState({yr2_worksheets: e.target.value})}>
+          <select value={(this.state.yr2_worksheets === null) ? false : this.state.yr1_billed} className="yr2_worksheets" id="yr2_worksheets" onChange={(e) => this.setState({yr2_worksheets: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="yr2_billed">Yr. 2 Billed?</label>
-          <select defaultValue={this.state.yr2_billed || false} className="yr2_billed" id="yr2_billed" onChange={(e) => this.setState({yr2_billed: e.target.value})}>
+          <select value={(this.state.yr2_billed === null) ? false : this.state.yr2_billed} className="yr2_billed" id="yr2_billed" onChange={(e) => this.setState({yr2_billed: e.target.value})}>
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
           <label htmlFor="yr3_worksheets">Yr. 3 Worksheets</label>
-          <select defaultValue={this.state.yr3_worksheets || false} className="yr3_worksheets" id="yr3_worksheets" onChange={(e) => this.setState({yr3_worksheets: e.target.value})}>
+          <select value={(this.state.yr3_worksheets === null) ? false : this.state.yr3_worksheets} className="yr3_worksheets" id="yr3_worksheets" onChange={(e) => this.setState({yr3_worksheets: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="yr3_billed">Yr. 3 Billed?</label>
-          <select defaultValue={this.state.yr3_billed || false} className="yr3_billed" id="yr3_billed" onChange={(e) => this.setState({yr3_billed: e.target.value})}>
+          <select value={(this.state.yr3_billed === null) ? false : this.state.yr3_billed} className="yr3_billed" id="yr3_billed" onChange={(e) => this.setState({yr3_billed: e.target.value})}>
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
           <label htmlFor="sustainment_letter">Sustainment Letter Sent?</label>
-          <select defaultValue={this.state.sustainment_letter || false} className="sustainment_letter" id="sustainment_letter" onChange={(e) => this.setState({sustainment_letter: e.target.value})}>
+          <select value={(this.state.sustainment_letter === null) ? false : this.state.sustainment_letter} className="sustainment_letter" id="sustainment_letter" onChange={(e) => this.setState({sustainment_letter: e.target.value})}>
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>

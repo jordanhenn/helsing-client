@@ -12,12 +12,14 @@ class TMItem extends Component {
     }
   
     componentDidMount() {
-        HelsingAPIService.getEmployeeById(this.props.e_id)
+       if(this.props.assigned_to !== null) {
+        HelsingAPIService.getEmployeeById(this.props.assigned_to)
             .then(employee => {
                 this.setState({
                     employee
                 })
           })
+       }
     }
 
     render() {
