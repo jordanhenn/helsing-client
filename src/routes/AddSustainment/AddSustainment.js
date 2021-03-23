@@ -124,7 +124,8 @@ class AddSustainment extends Component {
                 type='text'
                 id='manager_email'/>
           <label htmlFor="assigned_to">Assigned to:</label>
-          <select defaultValue={this.state.e_id} className="assigned_to" id="assigned_to" onChange={(e) => this.setState({e_id: e.target.value})}>
+          <select defaultValue={this.state.assigned_to} className="assigned_to" id="assigned_to" onChange={(e) => this.setState({assigned_to: e.target.value})}>
+          <option value={null}>Not Assigned</option>
               {this.state.employees.map(employee => {
                   return (
                       <option value={employee.e_id}>{employee.employee_firstname}</option>
