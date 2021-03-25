@@ -66,6 +66,8 @@ class ItemsNeeded extends Component {
     return (
       <div className='ItemsNeeded'>
         <ReserveNav/>
+        <h4>The following are studies for which not all required items have been received.
+          </h4>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

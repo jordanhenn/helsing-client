@@ -47,6 +47,8 @@ class SustainmentYearThree extends Component {
     return (
       <div className='YearThree'>
         <SustainmentNav/>
+        <h4>The following are studies that are in year three of the sustainment program, or have not had their year three study billed.
+          </h4>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

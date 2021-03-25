@@ -45,6 +45,10 @@ class TMCompleted extends Component {
     return (
       <div className='Completed'>
         <TMNav/>
+        <h4>The following associations have had their time and material updates billed. It is 
+            recommended that the completed studies are periodically deleted in order
+            save memory in the database and ensure faster loading times. 
+          </h4>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

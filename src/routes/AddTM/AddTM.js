@@ -53,6 +53,7 @@ class AddTM extends Component {
         <TMNav/>
         {(!this.state.submitted) ?  
         <form className='time-and-material' onSubmit={this.handleSubmit}>
+          <p>Fill out the information for the time and material update below, then hit submit.</p>
         <fieldset>
           <legend>{'T&M'} Info</legend>
           <label htmlFor='association_name'>

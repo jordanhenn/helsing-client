@@ -45,6 +45,8 @@ class TMQueue extends Component {
     return (
       <div className='Queue'>
         <TMNav/>
+        <h4>The following are the active time and material studies.
+          </h4>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

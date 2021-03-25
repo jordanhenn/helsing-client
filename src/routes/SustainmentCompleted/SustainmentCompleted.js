@@ -47,6 +47,10 @@ class SustainmentCompleted extends Component {
     return (
       <div className='Completed'>
         <SustainmentNav/>
+          <h4>The following associations have been billed through year 3. It is 
+            recommended that the completed studies are periodically deleted in order
+            save memory in the database and ensure faster loading times. 
+          </h4>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

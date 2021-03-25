@@ -86,6 +86,7 @@ class AddReserveStudy extends Component {
         <ReserveNav/>
         {(!this.state.submitted) ?  
         <form className='reserve-study' onSubmit={this.handleSubmit}>
+              <p>Fill out the information for the reserve study below, then hit submit.</p>
         <fieldset>
           <legend>Reserve Study Info</legend>
           <label htmlFor='association_name'>

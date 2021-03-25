@@ -71,6 +71,7 @@ class AddEmployee extends Component {
         }
         {(!this.state.submitted) ?  
         <form className='employee-form' onSubmit={this.handleSubmit}>
+          <p>Fill out the information for the employee below, then hit submit.</p>
         <fieldset>
           <legend>Employee Info</legend>
           <label htmlFor='employee_firstname'>

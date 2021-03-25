@@ -58,6 +58,8 @@ class Active extends Component {
     return (
       <div className='Active'>
         <ReserveNav/>
+        <h4>The following are are the active studies. All items have been recieved and the study has been assigned to an analyst.
+          </h4>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

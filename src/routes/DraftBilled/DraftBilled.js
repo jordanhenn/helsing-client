@@ -46,6 +46,8 @@ class DraftBilled extends Component {
     return (
       <div className='DraftBilled'>
         <ReserveNav/>
+        <h4>The following are studies for which the draft has been billed but not the final.
+          </h4>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

@@ -16,7 +16,6 @@ class Unassigned extends Component {
   static contextType = HelsingContext
 
   componentDidMount() {
-    console.log(this.context.studies)
       const UnassignedList = this.context.studies.filter(study => {
         if(study.csa === true &&
         study.scope === true &&
@@ -33,8 +32,6 @@ class Unassigned extends Component {
           return study
         }
       })
-
-      console.log(UnassignedList)
 
       if (this.context.searchQuery.length) {
         const FilteredUnassignedList = UnassignedList.filter(study => {
@@ -59,6 +56,8 @@ class Unassigned extends Component {
     return (
       <div className='Unassigned'>
         <ReserveNav/>
+        <h4>The following are the unassigned studies. All items have been received but the study has not been assigned to an analyst.
+          </h4>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

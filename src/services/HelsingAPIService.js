@@ -177,7 +177,7 @@ const HelsingAPIService = {
     })
   },
   updateTM(tm_id, updatedInfo) {
-    return fetch(`${config.API_ENDPOINT}/sustainment/${tm_id}`, {
+    return fetch(`${config.API_ENDPOINT}/timeandmaterial/${tm_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

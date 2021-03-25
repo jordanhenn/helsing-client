@@ -18,8 +18,7 @@ class SustainmentYearTwo extends Component {
   componentDidMount() {
       const YearTwoList = this.context.sustainment.filter(study => {
         if(study.yr1_billed !== null &&
-        study.yr2_billed === null &&
-        study.yr3_billed === null) {
+        study.yr2_billed === null) {
           return study
         }
       })
@@ -47,6 +46,8 @@ class SustainmentYearTwo extends Component {
     return (
       <div className='YearTwo'>
         <SustainmentNav/>
+        <h4>The following are studies that are in year two of the sustainment program, or have not had their year two update billed.
+          </h4>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

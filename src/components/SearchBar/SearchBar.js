@@ -4,6 +4,9 @@ import './SearchBar.css'
 
 class SearchBar extends Component {
 
+state = {
+  searchQuery: ''
+  }
 static contextType = HelsingContext
 
 
@@ -11,6 +14,11 @@ componentWillUnmount() {
     this.context.clearSearchQuery()
 }
 
+componentDidMount() {
+  this.context.setSearchQuery(this.state.searchQuery)
+  console.log(this.state.searchQuery)
+  console.log(this.context.searchQuery)
+}
   render() {
     return (
         <div>
@@ -20,8 +28,8 @@ componentWillUnmount() {
               </label>
            <input
                 className='search-bar'
-                value={this.context.searchQuery}
-                onChange={(e) => {this.context.setSearchQuery(e.target.value)}}
+                value={this.state.searchQuery}
+                onChange={(e) => {this.setState({ searchQuery: e.target.value })}}
                 type='text'
                 id='search-bar'/>
         </form>

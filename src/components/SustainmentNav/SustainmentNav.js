@@ -28,7 +28,7 @@ class SustainmentNav extends Component {
       <li className='SustainmentNav-link'>
       <Link
         style={{ textDecoration: 'none' }}
-        to={'/sustainment/completed'}>
+        to={'/sustainment/complete'}>
         Completed
       </Link>
       </li>

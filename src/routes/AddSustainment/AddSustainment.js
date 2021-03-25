@@ -67,6 +67,7 @@ class AddSustainment extends Component {
         <SustainmentNav/>
         {(!this.state.submitted) ?  
         <form className='sustainment' onSubmit={this.handleSubmit}>
+          <p>Fill out the information for the sustainment below, then hit submit.</p>
         <fieldset>
           <legend>Sustainment Info</legend>
           <label htmlFor='association_name'>

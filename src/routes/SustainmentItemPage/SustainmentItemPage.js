@@ -67,7 +67,8 @@ class SustainmentItemPage extends Component {
 
   renderManagerEmailBody() {
     const { worksheets_yr1, yr1_billed, worksheets_yr2, yr2_billed, worksheets_yr3, yr3_billed, association, manager_firstname } = this.state
-    if(!worksheets_yr1 && !yr1_billed) {
+    console.log(this.state.worksheets_yr1, this.state.yr1_billed, worksheets_yr2, yr2_billed, worksheets_yr3, yr3_billed, association, manager_firstname)
+    if(!worksheets_yr1 && !yr1_billed || worksheets_yr1 === null && yr1_billed === null) {
         const body = `
             Hi ${manager_firstname},
 
@@ -75,7 +76,7 @@ class SustainmentItemPage extends Component {
         `
         return body
     }
-    else if (yr1_billed && !yr2_billed && !worksheets_yr2 && !yr3_billed) {
+    else if (yr1_billed && !yr2_billed && !worksheets_yr2 && !yr3_billed || yr1_billed && yr2_billed === null && worksheets_yr2 == null && yr3_billed === null) {
         const body = `
             Hi ${manager_firstname},
 
@@ -83,7 +84,7 @@ class SustainmentItemPage extends Component {
         `
         return body
     }
-    else if (yr1_billed && yr2_billed && !yr3_billed && !worksheets_yr3) {
+    else if (yr1_billed && yr2_billed && !yr3_billed && !worksheets_yr3 || yr1_billed && yr2_billed && yr3_billed === null && !worksheets_yr3 === null) {
         const body = `
             Hi ${manager_firstname},
 
@@ -249,8 +250,8 @@ class SustainmentItemPage extends Component {
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
-          <label htmlFor="yr1_worksheets">Yr. 1 Worksheets</label>
-          <select value={(this.state.yr1_worksheets === null) ? false : this.state.yr1_worksehets} className="yr1_worksheets" id="yr1_worksheets" onChange={(e) => this.setState({yr1_worksheets: e.target.value})}>
+          <label htmlFor="worksheets_yr1">Yr. 1 Worksheets</label>
+          <select value={(this.state.worksheets_yr1 === null) ? false : this.state.worksheets_yr1} className="worksheets_yr1" id="worksheets_yr1" onChange={(e) => this.setState({worksheets_yr1: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
@@ -259,8 +260,8 @@ class SustainmentItemPage extends Component {
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
-          <label htmlFor="yr2_worksheets">Yr. 2 Worksheets</label>
-          <select value={(this.state.yr2_worksheets === null) ? false : this.state.yr1_billed} className="yr2_worksheets" id="yr2_worksheets" onChange={(e) => this.setState({yr2_worksheets: e.target.value})}>
+          <label htmlFor="worksheets_yr2">Yr. 2 Worksheets</label>
+          <select value={(this.state.worksheets_yr2 === null) ? false : this.state.yr1_billed} className="worksheets_yr2" id="worksheets_yr2" onChange={(e) => this.setState({worksheets_yr2: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
@@ -269,8 +270,8 @@ class SustainmentItemPage extends Component {
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
-          <label htmlFor="yr3_worksheets">Yr. 3 Worksheets</label>
-          <select value={(this.state.yr3_worksheets === null) ? false : this.state.yr3_worksheets} className="yr3_worksheets" id="yr3_worksheets" onChange={(e) => this.setState({yr3_worksheets: e.target.value})}>
+          <label htmlFor="worksheets_yr3">Yr. 3 Worksheets</label>
+          <select value={(this.state.worksheets_yr3 === null) ? false : this.state.worksheets_yr3} className="worksheets_yr3" id="worksheets_yr3" onChange={(e) => this.setState({worksheets_yr3: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>

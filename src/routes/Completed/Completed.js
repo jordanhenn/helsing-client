@@ -45,6 +45,9 @@ class Completed extends Component {
     return (
       <div className='Completed'>
         <ReserveNav/>
+        <h4>The following are studies that have had both the draft and final billed. It is recommended to periodically delete completed studies 
+          in order to conserve memory in the database and ensure faster loading times. 
+          </h4>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (

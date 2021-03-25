@@ -31,7 +31,7 @@ export class HelsingProvider extends Component {
   }
 
   clearSearchQuery = () => {
-    this.setState({ searchQuery: null })
+    this.setState({ searchQuery: '' })
   }
 
   setStudies = studies => {

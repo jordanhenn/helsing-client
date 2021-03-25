@@ -45,6 +45,8 @@ class SustainmentYearOne extends Component {
     return (
       <div className='YearOne'>
         <SustainmentNav/>
+        <h4>The following are studies that are in year one of the sustainment program, or have not had their year one update billed.
+          </h4>
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
