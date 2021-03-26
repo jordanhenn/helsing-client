@@ -24,23 +24,9 @@ class SustainmentYearThree extends Component {
         }
       })
 
-      if (this.context.searchQuery.length) {
-        const FilteredYearThreeList = YearThreeList.filter(study => {
-          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)) {
-            return study
-          }
-        })
-        this.setState({
-          studies: FilteredYearThreeList
-        })
-      }
-
-      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: YearThreeList
       })
-    }
   }
 
   render() {
@@ -49,6 +35,19 @@ class SustainmentYearThree extends Component {
         <SustainmentNav/>
         <h4>The following are studies that are in year three of the sustainment program, or have not had their year three study billed.
           </h4>
+          {(this.context.searchQuery.length) ?
+          <ul>
+          {this.state.studies.length && this.state.studies.filter(study => {
+          if(study.association !== null && study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number !== null && study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
+        }).map(study => {
+              return (
+                  <SustainmentItem key={study.s_id} {...study}/>
+              )
+          })}
+          </ul> :
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
@@ -56,6 +55,7 @@ class SustainmentYearThree extends Component {
               )
           })}
           </ul>
+          }
       </div>
     )
   }

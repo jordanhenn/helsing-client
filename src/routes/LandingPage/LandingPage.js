@@ -6,8 +6,7 @@ export default class LandingPage extends Component {
       return (
         <div className="about-app">
             <p>
-              Welcome to the Helsing Group Reserve Study Tracker. If you experience any issues, please try returning
-              to this home page and refreshing. 
+              Welcome to the Helsing Group Reserve Study Tracker. If you experience any issues, please return to the homepage and press refresh. 
             </p> 
         </div>
       )

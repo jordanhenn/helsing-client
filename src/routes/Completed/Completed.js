@@ -23,22 +23,9 @@ class Completed extends Component {
         }
       })
 
-      if (this.context.searchQuery.length) {
-        const FilteredCompletedList = CompletedList.filter(study => {
-          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)) {
-            return study
-          }
-        })
-        this.setState({
-          studies: FilteredCompletedList
-        })
-      }
-      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: CompletedList
       })
-    }
   }
 
   render() {
@@ -48,6 +35,19 @@ class Completed extends Component {
         <h4>The following are studies that have had both the draft and final billed. It is recommended to periodically delete completed studies 
           in order to conserve memory in the database and ensure faster loading times. 
           </h4>
+          {(this.context.searchQuery.length) ?
+          <ul>
+          {this.state.studies.length && this.state.studies.filter(study => {
+          if(study.association !== null && study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number !== null && study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
+        }).map(study => {
+              return (
+                  <ReserveItem key={study.rs_id} {...study}/>
+              )
+          })}
+          </ul> :
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
@@ -55,6 +55,7 @@ class Completed extends Component {
               )
           })}
           </ul>
+          }
       </div>
     )
   }

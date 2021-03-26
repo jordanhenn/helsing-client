@@ -22,23 +22,9 @@ class TMQueue extends Component {
         }
       })
 
-      if (this.context.searchQuery.length) {
-        const FilteredQueueList = QueueList.filter(study => {
-          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)) {
-            return study
-          }
-        })
-        this.setState({
-          studies: FilteredQueueList
-        })
-      }
-
-      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: QueueList
       })
-    }
   }
 
   render() {
@@ -47,6 +33,19 @@ class TMQueue extends Component {
         <TMNav/>
         <h4>The following are the active time and material studies.
           </h4>
+          {(this.context.searchQuery.length) ?
+          <ul>
+          {this.state.studies.length && this.state.studies.filter(study => {
+          if(study.association !== null && study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number !== null && study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
+        }).map(study => {
+              return (
+                  <TMItem key={study.tm_id} {...study}/>
+              )
+          })}
+          </ul> :
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
@@ -54,6 +53,7 @@ class TMQueue extends Component {
               )
           })}
           </ul>
+          }
       </div>
     )
   }

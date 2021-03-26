@@ -23,23 +23,9 @@ class SustainmentYearTwo extends Component {
         }
       })
 
-      if (this.context.searchQuery.length) {
-        const FilteredYearTwoList = YearTwoList.filter(study => {
-          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)) {
-            return study
-          }
-        })
-        this.setState({
-          studies: FilteredYearTwoList
-        })
-      }
-
-      if (!this.context.searchQuery.length) {
       this.setState({ 
           studies: YearTwoList
       })
-    }
   }
 
   render() {
@@ -48,6 +34,19 @@ class SustainmentYearTwo extends Component {
         <SustainmentNav/>
         <h4>The following are studies that are in year two of the sustainment program, or have not had their year two update billed.
           </h4>
+          {(this.context.searchQuery.length) ?
+          <ul>
+          {this.state.studies.length && this.state.studies.filter(study => {
+          if(study.association !== null && study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number !== null && study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
+        }).map(study => {
+              return (
+                  <SustainmentItem key={study.s_id} {...study}/>
+              )
+          })}
+          </ul> :
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
@@ -55,6 +54,7 @@ class SustainmentYearTwo extends Component {
               )
           })}
           </ul>
+          }
       </div>
     )
   }

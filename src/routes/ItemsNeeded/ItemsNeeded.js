@@ -43,23 +43,9 @@ class ItemsNeeded extends Component {
         }
       })
 
-      if (this.context.searchQuery.length) {
-        const FilteredItemsNeededList = ItemsNeededList.filter(study => {
-          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)) {
-            return study
-          }
-        })
-        this.setState({
-          studies: FilteredItemsNeededList
-        })
-      }
-
-      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: ItemsNeededList
       })
-    }
   }
 
   render() {
@@ -68,6 +54,19 @@ class ItemsNeeded extends Component {
         <ReserveNav/>
         <h4>The following are studies for which not all required items have been received.
           </h4>
+          {(this.context.searchQuery.length) ?
+          <ul>
+          {this.state.studies.length && this.state.studies.filter(study => {
+          if(study.association !== null && study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number !== null && study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
+        }).map(study => {
+              return (
+                  <ReserveItem key={study.rs_id} {...study}/>
+              )
+          })}
+          </ul> :
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
@@ -75,9 +74,11 @@ class ItemsNeeded extends Component {
               )
           })}
           </ul>
+          }
       </div>
     )
   }
 }
+
 
 export default ItemsNeeded

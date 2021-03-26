@@ -22,23 +22,9 @@ class SustainmentYearOne extends Component {
         }
       })
 
-      if (this.context.searchQuery.length) {
-        const FilteredYearOneList = YearOneList.filter(study => {
-          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)){
-            return study
-          }
-        })
-        this.setState({
-          studies: FilteredYearOneList
-        })
-      }
-
-      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: YearOneList
       })
-    }
   }
 
   render() {
@@ -47,6 +33,19 @@ class SustainmentYearOne extends Component {
         <SustainmentNav/>
         <h4>The following are studies that are in year one of the sustainment program, or have not had their year one update billed.
           </h4>
+          {(this.context.searchQuery.length) ?
+          <ul>
+          {this.state.studies.length && this.state.studies.filter(study => {
+          if(study.association !== null && study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number !== null && study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
+        }).map(study => {
+              return (
+                  <SustainmentItem key={study.s_id} {...study}/>
+              )
+          })}
+          </ul> :
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
@@ -54,6 +53,7 @@ class SustainmentYearOne extends Component {
               )
           })}
           </ul>
+          }
       </div>
     )
   }

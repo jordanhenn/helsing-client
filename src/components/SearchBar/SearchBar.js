@@ -9,15 +9,19 @@ state = {
   }
 static contextType = HelsingContext
 
+setSearchQuery = (searchQuery) => {
+  this.context.setSearchQuery(searchQuery)
+  this.setState({searchQuery})
+}
+
 
 componentWillUnmount() {
+    this.setState({searchQuery: ''})
     this.context.clearSearchQuery()
 }
 
 componentDidMount() {
   this.context.setSearchQuery(this.state.searchQuery)
-  console.log(this.state.searchQuery)
-  console.log(this.context.searchQuery)
 }
   render() {
     return (
@@ -29,7 +33,7 @@ componentDidMount() {
            <input
                 className='search-bar'
                 value={this.state.searchQuery}
-                onChange={(e) => {this.setState({ searchQuery: e.target.value })}}
+                onChange={(e) => this.setSearchQuery(e.target.value)}
                 type='text'
                 id='search-bar'/>
         </form>

@@ -35,23 +35,9 @@ class Active extends Component {
         }
       })
 
-      if (this.context.searchQuery.length) {
-        const FilteredActiveList = ActiveList.filter(study => {
-          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)) {
-            return study
-          }
-        })
-        this.setState({
-          studies: FilteredActiveList
-        })
-      }
-
-      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: ActiveList
       })
-    }
   }
 
   render() {
@@ -60,13 +46,27 @@ class Active extends Component {
         <ReserveNav/>
         <h4>The following are are the active studies. All items have been recieved and the study has been assigned to an analyst.
           </h4>
+          {(this.context.searchQuery.length) ?
+          <ul>
+          {this.state.studies.length && this.state.studies.filter(study => {
+          if(study.association !== null && study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number !== null && study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
+        }).map(study => {
+              return (
+                  <ReserveItem key={study.rs_id} {...study}/>
+              )
+          })}
+          </ul> :
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
-                  <ReserveItem key={study.rsId} {...study}/>
+                  <ReserveItem key={study.rs_id} {...study}/>
               )
           })}
           </ul>
+          }
       </div>
     )
   }

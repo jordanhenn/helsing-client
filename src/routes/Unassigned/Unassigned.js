@@ -33,23 +33,9 @@ class Unassigned extends Component {
         }
       })
 
-      if (this.context.searchQuery.length) {
-        const FilteredUnassignedList = UnassignedList.filter(study => {
-          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)){
-            return study
-          }
-        })
-        this.setState({
-          studies: FilteredUnassignedList
-        })
-      }
-
-      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: UnassignedList
       })
-    }
   }
 
   render() {
@@ -58,6 +44,19 @@ class Unassigned extends Component {
         <ReserveNav/>
         <h4>The following are the unassigned studies. All items have been received but the study has not been assigned to an analyst.
           </h4>
+          {(this.context.searchQuery.length) ?
+          <ul>
+          {this.state.studies.length && this.state.studies.filter(study => {
+          if(study.association !== null && study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number !== null && study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
+        }).map(study => {
+              return (
+                  <ReserveItem key={study.rs_id} {...study}/>
+              )
+          })}
+          </ul> :
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
@@ -65,6 +64,7 @@ class Unassigned extends Component {
               )
           })}
           </ul>
+          }
       </div>
     )
   }

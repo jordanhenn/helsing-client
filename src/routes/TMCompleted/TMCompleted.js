@@ -22,23 +22,9 @@ class TMCompleted extends Component {
         }
       })
 
-      if (this.context.searchQuery.length) {
-        const FilteredCompletedList = CompletedList.filter(study => {
-          if(study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
-          study.client_number.includes(this.context.searchQuery)) {
-            return study
-          }
-        })
-        this.setState({
-          studies: FilteredCompletedList
-        })
-      }
-
-      if(!this.context.searchQuery.length) {
       this.setState({ 
           studies: CompletedList
       })
-    }
   }
 
   render() {
@@ -49,6 +35,19 @@ class TMCompleted extends Component {
             recommended that the completed studies are periodically deleted in order
             save memory in the database and ensure faster loading times. 
           </h4>
+          {(this.context.searchQuery.length) ?
+          <ul>
+          {this.state.studies.length && this.state.studies.filter(study => {
+          if(study.association !== null && study.association.toLowerCase().includes(this.context.searchQuery.toLowerCase()) ||
+          study.client_number !== null && study.client_number.includes(this.context.searchQuery)) {
+            return study
+          }
+        }).map(study => {
+              return (
+                  <TMItem key={study.tm_id} {...study}/>
+              )
+          })}
+          </ul> :
           <ul>
           {this.state.studies.length && this.state.studies.map(study => {
               return (
@@ -56,6 +55,7 @@ class TMCompleted extends Component {
               )
           })}
           </ul>
+          }
       </div>
     )
   }
