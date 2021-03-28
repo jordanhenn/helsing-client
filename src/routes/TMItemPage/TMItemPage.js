@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
 import TMNav from '../../components/TMNav/TMNav'
 import Mailto from 'reactv16-mailto'
+import dateFormat from 'dateformat'
 import './TMItemPage.css'
 
 class TMItemPage extends Component {
@@ -122,9 +123,9 @@ class TMItemPage extends Component {
         <form className='time-and-material' onSubmit={this.handleUpdate}>
         <fieldset>
           <legend>{'T&M'} Info</legend>
-          <p>Added to job tracker on {this.state.date_added}</p>
+          <p>Added to job tracker on {dateFormat(this.state.date_added, "shortDate")}</p>
           {this.state.billed && 
-            <p>Billed on {this.state.billed_date}</p>}
+            <p>Billed on {dateFormat(this.state.billed_date, "shortDate")}</p>}
           <label htmlFor='association_name'>
                 Association Name
               </label>

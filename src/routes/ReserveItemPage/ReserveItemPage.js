@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
 import ReserveNav from '../../components/ReserveNav/ReserveNav'
 import Mailto from 'reactv16-mailto'
+import dateFormat from 'dateformat'
 import './ReserveItemPage.css'
 
 class ReserveItemPage extends Component {
@@ -176,13 +177,13 @@ class ReserveItemPage extends Component {
         <form className='reserve-study' onSubmit={this.handleUpdate}>
         <fieldset>
           <legend>Reserve Study Info</legend>
-          <p>Added to job tracker on {this.state.date_added}</p>
+          <p>Added to job tracker on {dateFormat(this.state.date_added, "shortDate")}</p>
           {this.state.date_in_queue && 
-            <p>Added to active queue on {this.state.date_in_queue}</p>}
+            <p>Added to active queue on {dateFormat(this.state.date_in_queue, "shortDate")}</p>}
           {this.state.draft_billed && 
-            <p>Draft billed on {this.state.draft_billed_date}</p>}
+            <p>Draft billed on {dateFormat(this.state.draft_billed_date, "shortDate")}</p>}
           {this.state.final_billed && 
-            <p>Final billed on {this.state.final_billed_date}</p>}
+            <p>Final billed on {dateFormat(this.state.final_billed_date, "shortDate")}</p>}
           <label htmlFor='association_name'>
                 Association Name
               </label>

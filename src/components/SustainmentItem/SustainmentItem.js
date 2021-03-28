@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HelsingAPIService from '../../services/HelsingAPIService'
 import { Link } from 'react-router-dom';
+import dateFormat from 'dateformat'
 import './SustainmentItem.css';
 
 class SustainmentItem extends Component {
@@ -27,7 +28,7 @@ class SustainmentItem extends Component {
         <ul className='sustainment-item-style'>
             <Link style={{ textDecoration: 'none' }}to={`/sustainment/${this.props.s_id}`}>
             <div className='sustainment-item'>
-                <p>{this.props.date_added}</p>
+                <p>{dateFormat(this.props.date_added, "shortDate")}</p>
                 <p>{this.props.association}</p>
                 <p>{this.props.client_number}</p>
                 <p>{this.props.total_price}</p>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HelsingAPIService from '../../services/HelsingAPIService'
 import { Link } from 'react-router-dom';
+import dateFormat from 'dateformat'
 import './ReserveItem.css';
 
 class ReserveItem extends Component {
@@ -27,7 +28,7 @@ class ReserveItem extends Component {
         <ul className='reserve-item-style'>
             <Link style={{ textDecoration: 'none' }}to={`/reservestudies/${this.props.rs_id}`}>
             <div className='reserve-item'>
-                <p>{this.props.date_added}</p>
+                <p>{dateFormat(this.props.date_added, "shortDate")}</p>
                 <p>{this.props.association}</p>
                 <p>{this.props.client_number}</p>
                 <p>{this.props.total_price}</p>

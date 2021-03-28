@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import HelsingAPIService from '../../services/HelsingAPIService'
 import SustainmentNav from '../../components/SustainmentNav/SustainmentNav'
 import Mailto from 'reactv16-mailto'
+import dateFormat from 'dateformat'
 import './SustainmentItemPage.css'
 
 class SustainmentItemPage extends Component {
@@ -172,11 +173,11 @@ class SustainmentItemPage extends Component {
           <legend>Sustainment Info</legend>
           <p>Added to job tracker on {this.state.date_added}</p>
           {this.state.yr1_billed && 
-            <p>Yr. 1 billed on {this.state.yr1_billed_date}</p>}
+            <p>Yr. 1 billed on {dateFormat(this.state.yr1_billed_date, "shortDate")}</p>}
           {this.state.yr2_billed && 
-            <p>Yr. 2 billed on {this.state.yr2_billed_date}</p>}
+            <p>Yr. 2 billed on {dateFormat(this.state.yr2_billed_date, "shortDate")}</p>}
           {this.state.yr3_billed && 
-            <p>Yr. 3 billed on {this.state.yr3_billed_date}</p>}
+            <p>Yr. 3 billed on {dateFormat(this.state.yr3_billed_date, "shortDate")}</p>}
           <label htmlFor='association_name'>
                 Association Name
               </label>
