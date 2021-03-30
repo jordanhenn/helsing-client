@@ -184,6 +184,8 @@ class ReserveItemPage extends Component {
             <p>Draft billed on {dateFormat(this.state.draft_billed_date, "shortDate")}</p>}
           {this.state.final_billed && 
             <p>Final billed on {dateFormat(this.state.final_billed_date, "shortDate")}</p>}
+          <div className='form-flex'>
+            <div className='form-flex-section'>
           <label htmlFor='association_name'>
                 Association Name
               </label>
@@ -262,6 +264,8 @@ class ReserveItemPage extends Component {
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
+          </div>
+          <div className='form-flex-section'>
           <label htmlFor="ccrs">{'CC&Rs'}</label>
           <select value={(this.state.ccrs === null) ? false : this.state.ccrs} className="ccrs" id="ccrs" onChange={(e) => this.setState({ccrs: e.target.value})}>
                 <option value={true}>Received</option>
@@ -312,6 +316,8 @@ class ReserveItemPage extends Component {
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
+          </div>
+          </div>
           <label htmlFor="additional_notes">Additional Notes:</label>
             <textarea value={this.state.additional_notes} id="additional_notes" className="additional_notes" rows="4" cols="50" onChange={(e) => this.setState({additional_notes: e.target.value})}/>
         </fieldset>

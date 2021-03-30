@@ -59,8 +59,10 @@ class App extends Component {
       <div className='App'>
         <header className='App__header'>
           <div className='header-styling'>
+          <div className='header-and-search'>
           <h1><Link style={{ textDecoration: 'none' }} to={'/'}>HG Job Tracker</Link></h1>
           <SearchBar/>
+          </div>
           <MainNav/>
           </div>
         </header>

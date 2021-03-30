@@ -25,9 +25,9 @@ componentDidMount() {
 }
   render() {
     return (
-        <div>
+        <div className='search-area'>
         <form>
-          <label htmlFor='search-bar'>
+          <label className='search-bar-label' htmlFor='search-bar'>
                 Search
               </label>
            <input
