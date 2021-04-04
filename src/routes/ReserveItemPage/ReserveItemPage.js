@@ -318,9 +318,12 @@ class ReserveItemPage extends Component {
           </select>
           </div>
           </div>
+          <div className='additional-notes-style'>
           <label htmlFor="additional_notes">Additional Notes:</label>
             <textarea value={this.state.additional_notes} id="additional_notes" className="additional_notes" rows="4" cols="50" onChange={(e) => this.setState({additional_notes: e.target.value})}/>
+          </div>
         </fieldset>
+        <div className='buttons'>
         <Mailto 
             email={this.state.manager_email}
             headers={{
@@ -343,6 +346,7 @@ class ReserveItemPage extends Component {
         <button className="delete" onClick={this.handleDelete}>
           DELETE
         </button>
+        </div>
       </form> :
       <h4>
           This study has been {this.state.updatedType}. Please refresh the page to see the changes. 

@@ -171,13 +171,15 @@ class SustainmentItemPage extends Component {
         <form className='sustainment' onSubmit={this.handleUpdate}>
         <fieldset>
           <legend>Sustainment Info</legend>
-          <p>Added to job tracker on {this.state.date_added}</p>
+          <p>Added to job tracker on {dateFormat(this.state.date_added, "shortDate")}</p>
           {this.state.yr1_billed && 
             <p>Yr. 1 billed on {dateFormat(this.state.yr1_billed_date, "shortDate")}</p>}
           {this.state.yr2_billed && 
             <p>Yr. 2 billed on {dateFormat(this.state.yr2_billed_date, "shortDate")}</p>}
           {this.state.yr3_billed && 
             <p>Yr. 3 billed on {dateFormat(this.state.yr3_billed_date, "shortDate")}</p>}
+          <div className='form-flex'>
+          <div className='form-flex-section'>
           <label htmlFor='association_name'>
                 Association Name
               </label>
@@ -246,6 +248,8 @@ class SustainmentItemPage extends Component {
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
+          </div>
+          <div className='form-flex-section'>
           <label htmlFor="retainer">Retainer</label>
           <select value={(this.state.retainer === null) ? false : this.state.retainer} className="retainer" id="retainer" onChange={(e) => this.setState({retainer: e.target.value})}>
                 <option value={true}>Received</option>
@@ -286,9 +290,14 @@ class SustainmentItemPage extends Component {
                 <option value={true}>True</option>
                 <option value={false}>False</option>
           </select>
+          </div>
+          </div>
+          <div className='additional-notes-style'>
           <label htmlFor="additional_notes">Additional Notes:</label>
             <textarea value={this.state.additional_notes} id="additional_notes" className="additional_notes" rows="4" cols="50" onChange={(e) => this.setState({additional_notes: e.target.value})}/>
+          </div>
         </fieldset>
+        <div className='buttons'>
         <Mailto 
             email={this.state.manager_email}
             headers={{
@@ -310,7 +319,8 @@ class SustainmentItemPage extends Component {
           </button>
         <button className="delete" onClick={this.handleDelete}>
           DELETE
-        </button>    
+        </button>
+        </div>    
       </form> :
       <h4>
           This study has been {this.state.updatedType}. Please refresh the page to see the changes. 

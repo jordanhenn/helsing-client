@@ -52,6 +52,13 @@ textarea {
     flex-direction: column;
 }
 
+.additional-notes-style {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: inherit;
+}
+
 p {
     text-align: center;
 }
@@ -66,4 +73,23 @@ h1, h4 {
     width: 50%
 }
 
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+    padding: 10px;
+}
+
+button {
+    background-color: #553D67;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+}
+
+
+button:hover{
+    background-color: #99738E;
+}
 

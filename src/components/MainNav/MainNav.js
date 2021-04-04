@@ -9,30 +9,30 @@ class MainNav extends Component {
     <div className='MainNav-Style'>
     <ul className='Main-MainNav'>
       <li className='MainNav-link'>
-      <Link style={{ textDecoration: 'none' }} to={'/'}>
+      <Link style={{ textDecoration: 'none', backgroundColor: '#553D67' }} to={'/'}>
         Home
       </Link>
       </li>
       <li className='MainNav-link'>
-      <Link style={{ textDecoration: 'none' }} to={'/reservestudies/active'}>
+      <Link style={{ textDecoration: 'none', backgroundColor: '#553D67' }} to={'/reservestudies/active'}>
         Reserve Studies
       </Link>
       </li>
       <li className='MainNav-link'>
-      <Link style={{ textDecoration: 'none' }} to={'/sustainment/year3'}>
+      <Link style={{ textDecoration: 'none', backgroundColor: '#553D67' }} to={'/sustainment/year3'}>
         Sustainment
       </Link>
       </li>
       <li className='MainNav-link'>
       <Link
-        style={{ textDecoration: 'none' }}
+        style={{ textDecoration: 'none', backgroundColor: '#553D67' }}
         to={'/timeandmaterial/active'}>
         {'T&M'}
       </Link>
       </li>
       <li className='MainNav-link'>
       <Link
-        style={{ textDecoration: 'none' }}
+        style={{ textDecoration: 'none', backgroundColor: '#553D67' }}
         to={'/employees'}>
         Employees
       </Link>

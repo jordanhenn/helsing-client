@@ -56,6 +56,8 @@ class AddTM extends Component {
           <p>Fill out the information for the time and material update below, then hit submit.</p>
         <fieldset>
           <legend>{'T&M'} Info</legend>
+          <div className='form-flex'>
+          <div className='form-flex-section'>
           <label htmlFor='association_name'>
                 Association Name
               </label>
@@ -92,6 +94,8 @@ class AddTM extends Component {
                 onChange={(e) => {this.setState({total_price: e.target.value})}}
                 type='text'
                 id='total_price'/>
+          </div>
+          <div className='form-flex-section'>
            <label htmlFor='manager_firstname'>
                 Manager First Name
               </label>
@@ -129,12 +133,18 @@ class AddTM extends Component {
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
+          </div>
+          </div>
+          <div className='additional-notes-style'>
           <label htmlFor="additional_notes">Additional Notes:</label>
             <textarea value={this.state.additional_notes} id="additional_notes" className="additional_notes" rows="4" cols="50" onChange={(e) => this.setState({additional_notes: e.target.value})}/>
+           </div>
         </fieldset>
+        <div className="buttons">
         <button className="submit" type='submit'>
             SUBMIT
-          </button>    
+          </button>
+          </div>  
       </form> :
       <h4>
           This study has been submitted. Please <Link to={'/'}>click here</Link> to go to the homepage.

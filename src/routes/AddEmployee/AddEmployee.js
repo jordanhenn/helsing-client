@@ -71,9 +71,10 @@ class AddEmployee extends Component {
         }
         {(!this.state.submitted) ?  
         <form className='employee-form' onSubmit={this.handleSubmit}>
-          <p>Fill out the information for the employee below, then hit submit.</p>
+          <p>Fill out the information for the new employee below, then hit submit.</p>
         <fieldset>
-          <legend>Employee Info</legend>
+          <legend>New Employee Info</legend>
+          <div className='form-flex-section'>
           <label htmlFor='employee_firstname'>
                 First Name
               </label>
@@ -101,10 +102,13 @@ class AddEmployee extends Component {
                 onChange={(e) => {this.setState({employee_email: e.target.value})}}
                 type='text'
                 id='employee_email'/>
+            </div>
         </fieldset>
+        <div className="buttons">
         <button className="submit" type='submit'>
             SUBMIT
-          </button>    
+          </button>  
+          </div>  
       </form> :
       <h4>
           The new employee has been added. Please refresh the page to see the updated employee list. 

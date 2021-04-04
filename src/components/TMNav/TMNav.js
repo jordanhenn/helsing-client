@@ -9,18 +9,18 @@ class TMNav extends Component {
     <div className='TMNav-Style'>
     <ul className='Main-TMNav'>
       <li className='TMNav-link'>
-      <Link style={{ textDecoration: 'none' }} to={'/timeandmaterial/active'}>
+      <Link style={{ textDecoration: 'none', backgroundColor: '#553D67' }} to={'/timeandmaterial/active'}>
         Active
       </Link>
       </li>
       <li className='TMNav-link'>
-      <Link style={{ textDecoration: 'none' }} to={'/timeandmaterial/completed'}>
+      <Link style={{ textDecoration: 'none', backgroundColor: '#553D67' }} to={'/timeandmaterial/completed'}>
         Completed
       </Link>
       </li>
       <li className='TMNav-link'>
       <Link
-        style={{ textDecoration: 'none' }}
+        style={{ textDecoration: 'none', backgroundColor: '#553D67' }}
         to={'/timeandmaterial/add'}>
         Add {'T&M'}
       </Link>
