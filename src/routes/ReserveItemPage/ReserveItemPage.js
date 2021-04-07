@@ -14,6 +14,8 @@ class ReserveItemPage extends Component {
   state = {
     rs_id: null,
     association: null,
+    rs_location: null,
+    unit_count: null,
     manager_firstname: null,
     manager_email: null,
     assigned_to: null,
@@ -106,7 +108,7 @@ class ReserveItemPage extends Component {
         let body = `
         Hi ${this.state.manager_firstname},
 
-        This email is in regards to ${this.state.association}. We are progressing on the reserve study report, however we are still waiting to receive the following items:
+        This email is in regards to ${this.state.association}. We will need following required items in order to move forward on the report:
 
         ${list}
 
@@ -140,12 +142,12 @@ class ReserveItemPage extends Component {
 
   handleUpdate = (ev) => {
     ev.preventDefault()
-    const { rs_id, association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, additional_notes } = this.state
+    const { rs_id, association, rs_location, unit_count, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, additional_notes } = this.state
     let date_in_queue = this.state.date_in_queue
     if (csa !== false && scope !== false && retainer !== false && ccrs !== false && hoa_questionnaire !== false && budget !== false && site_plan !== false && reserve_study !== false && annual_review !== false && income_statement !== false && balance_sheet !== false && date_in_queue === null) {
         date_in_queue = new Date()
     }
-    const updatedInfo = { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, date_in_queue, additional_notes }
+    const updatedInfo = { association, rs_location, unit_count, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, date_in_queue, additional_notes }
     HelsingAPIService.updateReserveStudy(rs_id, updatedInfo)
     this.setState({
       updated: true,
@@ -195,6 +197,24 @@ class ReserveItemPage extends Component {
                 onChange={(e) => {this.setState({association: e.target.value})}}
                 type='text'
                 id='association_name'/>
+          <label htmlFor='rs_location'>
+                Location
+              </label>
+           <input
+                className='rs_location'
+                value={this.state.rs_location}
+                onChange={(e) => {this.setState({rs_location: e.target.value})}}
+                type='text'
+                id='rs_location'/>
+           <label htmlFor='unit_count'>
+                Unit Count
+              </label>
+           <input
+                className='unit_count'
+                value={this.state.unit_count}
+                onChange={(e) => {this.setState({unit_count: e.target.value})}}
+                type='text'
+                id='unit_count'/>
             <label htmlFor='client_number'>
                 Client #
               </label>
@@ -255,7 +275,7 @@ class ReserveItemPage extends Component {
                 <option value={false}>Not Received</option>
           </select>
           <label htmlFor="scope">Scope</label>
-          <select value={(this.state.scope === null) ? false : this.state.csa} className="scope" id="scope" onChange={(e) => this.setState({scope: e.target.value})}>
+          <select value={(this.state.scope === null) ? false : this.state.scope} className="scope" id="scope" onChange={(e) => this.setState({scope: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>

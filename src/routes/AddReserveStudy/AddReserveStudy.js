@@ -12,6 +12,8 @@ class AddReserveStudy extends Component {
 
   state = {
     association: null,
+    rs_location: null,
+    unit_count: null,
     manager_firstname: null,
     manager_email: null,
     assigned_to: null,
@@ -46,8 +48,8 @@ class AddReserveStudy extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    const { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, additional_notes } = this.state
-    const newRSInfo = { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, additional_notes }
+    const { association, rs_location, unit_count, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, additional_notes } = this.state
+    const newRSInfo = { association, rs_location, unit_count, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, additional_notes }
     newRSInfo.date_added = new Date()
     HelsingAPIService.addReserveStudy(newRSInfo)
     this.setState({submitted: true})
@@ -100,6 +102,24 @@ class AddReserveStudy extends Component {
                 onChange={(e) => {this.setState({association: e.target.value})}}
                 type='text'
                 id='association_name'/>
+          <label htmlFor='rs_location'>
+                Location
+              </label>
+           <input
+                className='rs_location'
+                value={this.state.rs_location}
+                onChange={(e) => {this.setState({rs_location: e.target.value})}}
+                type='text'
+                id='rs_location'/>
+           <label htmlFor='unit_count'>
+                Unit Count
+              </label>
+           <input
+                className='unit_count'
+                value={this.state.unit_count}
+                onChange={(e) => {this.setState({unit_count: e.target.value})}}
+                type='text'
+                id='unit_count'/>
             <label htmlFor='client_number'>
                 Client #
               </label>
