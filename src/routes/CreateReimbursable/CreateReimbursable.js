@@ -60,8 +60,6 @@ export default class CreateReimbursable extends Component {
           onChange={(e) => {this.setState({association: e.target.value})}}
           type='text'
           id='association'/>
-    </div>
-    <div className='form-flex-section'>
       <label htmlFor='client_number'>
           Client #
         </label>
@@ -72,6 +70,8 @@ export default class CreateReimbursable extends Component {
           onChange={(e) => {this.setState({client_number: e.target.value})}}
           type='text'
           id='client_number'/>
+    </div>
+    <div className='form-flex-section'>
       <label htmlFor='requested_by'>
           Requested By
         </label>

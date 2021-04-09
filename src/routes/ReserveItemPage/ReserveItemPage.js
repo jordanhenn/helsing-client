@@ -279,13 +279,13 @@ class ReserveItemPage extends Component {
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
+          </div>
+          <div className='form-flex-section'>
           <label htmlFor="retainer">Retainer</label>
           <select value={(this.state.retainer === null) ? false : this.state.retainer} className="retainer" id="retainer" onChange={(e) => this.setState({retainer: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
-          </div>
-          <div className='form-flex-section'>
           <label htmlFor="ccrs">{'CC&Rs'}</label>
           <select value={(this.state.ccrs === null) ? false : this.state.ccrs} className="ccrs" id="ccrs" onChange={(e) => this.setState({ccrs: e.target.value})}>
                 <option value={true}>Received</option>

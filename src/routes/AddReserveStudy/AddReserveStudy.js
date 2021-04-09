@@ -179,13 +179,13 @@ class AddReserveStudy extends Component {
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
+          </div>
+          <div className='form-flex-section'>
           <label htmlFor="scope">Scope</label>
           <select defaultValue={this.state.scope} className="scope" id="scope" onChange={(e) => this.setState({scope: e.target.value})}>
                 <option value={true}>Received</option>
                 <option value={false}>Not Received</option>
           </select>
-          </div>
-          <div className='form-flex-section'>
           <label htmlFor="retainer">Retainer</label>
           <select defaultValue={this.state.retainer} className="retainer" id="retainer" onChange={(e) => this.setState({retainer: e.target.value})}>
                 <option value={true}>Received</option>
