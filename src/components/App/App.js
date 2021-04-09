@@ -24,7 +24,6 @@ import TMItemPage from '../../routes/TMItemPage/TMItemPage'
 import TMQueue from '../../routes/TMQueue/TMQueue'
 import TMCompleted from '../../routes/TMCompleted/TMCompleted'
 import CreateReimbursable from '../../routes/CreateReimbursable/CreateReimbursable'
-import Reimbursable from '../../routes/Reimbursable/Reimbursable'
 import MainNav from '../../components/MainNav/MainNav'
 import './App.css'
 
@@ -154,10 +153,6 @@ class App extends Component {
             <Route
               path={'/createreimbursable'}
               component={CreateReimbursable}
-            />
-            <Route
-              path={'/reimbursable'}
-              component={Reimbursable}
             />
             <Route
               component={NotFoundPage}

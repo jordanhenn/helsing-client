@@ -33,6 +33,13 @@ class MainNav extends Component {
       <li className='MainNav-link'>
       <Link
         style={{ textDecoration: 'none', backgroundColor: '#553D67' }}
+        to={'/createreimbursable'}>
+        Reimbursable
+      </Link>
+      </li>
+      <li className='MainNav-link'>
+      <Link
+        style={{ textDecoration: 'none', backgroundColor: '#553D67' }}
         to={'/employees'}>
         Employees
       </Link>

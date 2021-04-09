@@ -129,7 +129,7 @@ class AddReserveStudy extends Component {
                 onChange={(e) => {this.setState({client_number: e.target.value})}}
                 type='text'
                 id='client_number'/>
-            <label htmlFor='client_number'>
+            <label htmlFor='fy_end'>
                 FY End
               </label>
            <input
