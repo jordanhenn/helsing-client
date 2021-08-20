@@ -58,6 +58,8 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
+        <h1 className='no-mobile'>This app is not available on mobile devices.</h1>
+        <div className='page'>
         <header className='App__header'>
           <div className='header-styling'>
           <div className='header-and-search'>
@@ -160,6 +162,7 @@ class App extends Component {
           </Switch>
         </div>
         </main>
+        </div>
       </div>
     )
   }

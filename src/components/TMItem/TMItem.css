@@ -1,14 +1,11 @@
 .tm-item {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
     background-color: #553D67;
     border-radius: 10px;
     color: white;
     font-weight: bold;
-    width: 60%;
-    margin-left: 175px;
+    width: 80%;
     margin-bottom: 5px;
 }
 
