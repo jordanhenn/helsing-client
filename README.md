@@ -1,4 +1,4 @@
-# Helsing Client
+# Helsing Client - Live Site
 https://helsing-client.vercel.app
 
 ## API Repo
